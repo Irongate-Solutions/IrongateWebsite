@@ -1,0 +1,113 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+import ServiceCard from '@components/ServiceCard.astro';
+import CaseStudyCard from '@components/CaseStudyCard.astro';
+import EmailCapture from '@components/EmailCapture.astro';
+import company from '@data/company.json';
+
+const services = [
+  {
+    title: "System Integration",
+    description: "Connect disparate systems into cohesive workflows that actually work.",
+    slug: "integration"
+  },
+  {
+    title: "Custom Development",
+    description: "Purpose-built solutions when off-the-shelf falls short.",
+    slug: "development"
+  },
+  {
+    title: "Data & Analytics",
+    description: "Transform raw data into actionable intelligence.",
+    slug: "analytics"
+  }
+];
+
+const caseStudies = [
+  {
+    title: "Healthcare Network Integration",
+    problem: "Seven systems, zero communication",
+    outcome: "$1.2M annual savings",
+    slug: "enterprise-integration"
+  },
+  {
+    title: "Custom Manufacturing Platform",
+    problem: "Excel-based production tracking",
+    outcome: "60% faster order processing",
+    slug: "custom-platform"
+  },
+  {
+    title: "Real-time Analytics Pipeline",
+    problem: "Week-old reports driving daily decisions",
+    outcome: "Sub-minute data freshness",
+    slug: "data-pipeline"
+  }
+];
+---
+
+<BaseLayout
+  title="Enterprise Integration & Custom Development"
+  description="We build the technical infrastructure that lets your business operate at scale."
+>
+  <!-- Hero Section -->
+  <section class="bg-white py-20">
+    <div class="container mx-auto px-6">
+      <div class="max-w-3xl">
+        <h1 class="font-heading text-5xl font-bold text-charcoal mb-6">
+          We fix what's broken between your systems
+        </h1>
+        <p class="text-xl text-charcoal-light mb-8">
+          {company.tagline}. No consultancy theater, no vendor lock-in. Just solid technical work that scales.
+        </p>
+        <a href="/contact" class="inline-block bg-copper text-white font-medium py-3 px-8 rounded-md hover:bg-copper-dark transition-colors">
+          Start a Conversation
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Philosophy Section -->
+  <section class="py-16">
+    <div class="container mx-auto px-6">
+      <div class="max-w-3xl mx-auto text-center">
+        <h2 class="font-heading text-3xl font-bold mb-6">{company.philosophy.title}</h2>
+        <p class="text-lg text-charcoal-light">{company.philosophy.description}</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Section -->
+  <section class="bg-white py-20">
+    <div class="container mx-auto px-6">
+      <h2 class="font-heading text-3xl font-bold text-center mb-12">What We Do</h2>
+      <div class="grid md:grid-cols-3 gap-8">
+        {services.map(service => (
+          <ServiceCard {...service} />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Case Studies Section -->
+  <section class="py-20">
+    <div class="container mx-auto px-6">
+      <h2 class="font-heading text-3xl font-bold text-center mb-12">Recent Work</h2>
+      <div class="grid md:grid-cols-3 gap-8">
+        {caseStudies.map(study => (
+          <CaseStudyCard {...study} />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Email Capture Section -->
+  <section class="bg-charcoal text-white py-16">
+    <div class="container mx-auto px-6">
+      <div class="max-w-2xl mx-auto text-center">
+        <h2 class="font-heading text-3xl font-bold mb-4">Stay Updated</h2>
+        <p class="mb-8">Technical insights and case studies. No sales pitches.</p>
+        <EmailCapture source="homepage-footer" />
+      </div>
+    </div>
+  </section>
+</BaseLayout>

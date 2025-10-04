@@ -1,0 +1,68 @@
+---
+export interface Props {
+  source: string;
+}
+
+const { source } = Astro.props;
+const webhookUrl = import.meta.env.PUBLIC_N8N_EMAIL_WEBHOOK;
+---
+
+<form id="email-capture-form" class="flex flex-col sm:flex-row gap-4" data-source={source}>
+  <input
+    type="email"
+    id="capture-email"
+    name="email"
+    placeholder="Enter your email"
+    required
+    class="flex-1 px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-copper focus:border-copper"
+  >
+  <button
+    type="submit"
+    class="bg-copper text-white font-medium py-3 px-8 rounded-md hover:bg-copper-dark transition-colors whitespace-nowrap"
+  >
+    Subscribe
+  </button>
+</form>
+
+<div id="email-status" class="mt-4 text-sm hidden"></div>
+
+<script define:vars={{ webhookUrl }}>
+  const form = document.getElementById('email-capture-form');
+  const status = document.getElementById('email-status');
+
+  form?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const formData = new FormData(form);
+    const data = {
+      email: formData.get('email'),
+      source: form.dataset.source,
+      timestamp: new Date().toISOString()
+    };
+
+    try {
+      status.textContent = 'Subscribing...';
+      status.classList.remove('hidden', 'text-red-600', 'text-green-600');
+
+      const response = await fetch(webhookUrl, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+      });
+
+      if (response.ok) {
+        status.textContent = 'Successfully subscribed!';
+        status.classList.add('text-green-600');
+        form.reset();
+
+        // Track event
+        window.trackEvent('Email', 'Subscribe', form.dataset.source);
+      } else {
+        throw new Error('Subscription failed');
+      }
+    } catch (error) {
+      status.textContent = 'Error subscribing. Please try again.';
+      status.classList.add('text-red-600');
+    }
+  });
+</script>

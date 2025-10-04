@@ -1,0 +1,20 @@
+---
+export interface Props {
+  title: string;
+  description: string;
+  slug: string;
+}
+
+const { title, description, slug } = Astro.props;
+---
+
+<div class="bg-slate-50 p-6 rounded-lg border border-charcoal/10 hover:border-copper transition-colors">
+  <h3 class="font-heading text-xl font-bold text-charcoal mb-3">{title}</h3>
+  <p class="text-charcoal-light mb-4">{description}</p>
+  <a
+    href={`/services#${slug}`}
+    class="text-copper font-medium hover:text-copper-dark transition-colors"
+  >
+    Learn More →
+  </a>
+</div>

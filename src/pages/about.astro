@@ -1,0 +1,100 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+import ContactCTA from '@components/ContactCTA.astro';
+import company from '@data/company.json';
+---
+
+<BaseLayout
+  title="About Us"
+  description="Learn about Irongate Solutions and our approach to enterprise integration and custom development."
+>
+  <!-- Hero Section -->
+  <section class="bg-white py-16">
+    <div class="container mx-auto px-6">
+      <div class="max-w-3xl">
+        <h1 class="font-heading text-4xl font-bold text-charcoal mb-6">
+          Engineering Solutions for Business Problems
+        </h1>
+        <p class="text-xl text-charcoal-light">
+          Based in {company.address.city}, we help enterprises solve the technical challenges that prevent them from scaling.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Philosophy -->
+  <section class="py-16">
+    <div class="container mx-auto px-6">
+      <div class="max-w-3xl mx-auto">
+        <h2 class="font-heading text-3xl font-bold mb-6">{company.philosophy.title}</h2>
+        <p class="text-lg text-charcoal-light mb-8">
+          {company.philosophy.description}
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- How We Work -->
+  <section class="bg-white py-16">
+    <div class="container mx-auto px-6">
+      <div class="max-w-3xl mx-auto">
+        <h2 class="font-heading text-3xl font-bold mb-8">How We Work</h2>
+
+        <div class="space-y-8">
+          <div>
+            <h3 class="font-heading text-xl font-semibold text-charcoal mb-3">No Vendor Lock-In</h3>
+            <p class="text-charcoal-light">
+              We build solutions using open standards and well-documented technologies. You own the code, you understand the architecture, and you can maintain it without us if needed.
+            </p>
+          </div>
+
+          <div>
+            <h3 class="font-heading text-xl font-semibold text-charcoal mb-3">Technical Honesty</h3>
+            <p class="text-charcoal-light">
+              If a $200/month SaaS tool solves your problem, we'll tell you. We only build custom solutions when they genuinely provide better value than existing alternatives.
+            </p>
+          </div>
+
+          <div>
+            <h3 class="font-heading text-xl font-semibold text-charcoal mb-3">Built to Last</h3>
+            <p class="text-charcoal-light">
+              We don't chase trends or over-engineer. Every technical decision prioritizes long-term maintainability, clear documentation, and operational simplicity.
+            </p>
+          </div>
+
+          <div>
+            <h3 class="font-heading text-xl font-semibold text-charcoal mb-3">Transparent Pricing</h3>
+            <p class="text-charcoal-light">
+              Fixed-price projects when scope is clear. Time-and-materials when exploration is needed. Either way, you'll know exactly what you're paying for and why.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Who We Serve -->
+  <section class="py-16">
+    <div class="container mx-auto px-6">
+      <div class="max-w-3xl mx-auto">
+        <h2 class="font-heading text-3xl font-bold mb-6">Who We Work With</h2>
+        <p class="text-lg text-charcoal-light mb-6">
+          We specialize in helping mid-size to enterprise companies (50-5000 employees) across healthcare, manufacturing, logistics, and financial services.
+        </p>
+        <p class="text-lg text-charcoal-light">
+          If you're dealing with legacy system integration, data silos preventing scaling, or workflows that require custom automation, we should talk.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-16">
+    <div class="container mx-auto px-6">
+      <ContactCTA
+        title="Let's Talk About Your Challenges"
+        description="Schedule a no-obligation consultation to discuss your technical requirements."
+      />
+    </div>
+  </section>
+</BaseLayout>

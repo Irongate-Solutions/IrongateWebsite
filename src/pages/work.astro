@@ -1,0 +1,96 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+import ContactCTA from '@components/ContactCTA.astro';
+import { getCollection } from 'astro:content';
+
+const caseStudies = await getCollection('case-studies');
+---
+
+<BaseLayout
+  title="Our Work"
+  description="Real-world case studies showcasing enterprise integration, custom development, and data analytics solutions."
+>
+  <!-- Hero Section -->
+  <section class="bg-white py-16">
+    <div class="container mx-auto px-6">
+      <div class="max-w-3xl">
+        <h1 class="font-heading text-4xl font-bold text-charcoal mb-6">
+          Case Studies: Problems We've Solved
+        </h1>
+        <p class="text-xl text-charcoal-light">
+          Real challenges, technical solutions, measurable outcomes. No fluff, just engineering.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Case Studies -->
+  <section class="py-16">
+    <div class="container mx-auto px-6">
+      <div class="max-w-4xl mx-auto space-y-16">
+        {caseStudies.map((study) => (
+          <div id={study.data.slug} class="scroll-mt-20">
+            <article class="bg-white p-8 rounded-lg border border-charcoal/10">
+              <div class="mb-6">
+                <h2 class="font-heading text-3xl font-bold text-charcoal mb-3">
+                  {study.data.title}
+                </h2>
+                <div class="flex flex-wrap gap-4 text-sm text-charcoal/70">
+                  <span>Industry: {study.data.industry}</span>
+                  <span>•</span>
+                  <span>Duration: {study.data.duration}</span>
+                </div>
+              </div>
+
+              <div class="prose prose-lg max-w-none">
+                <div set:html={study.body} />
+              </div>
+
+              <div class="mt-6 pt-6 border-t border-charcoal/10">
+                <p class="text-sm text-charcoal/70">
+                  Technologies: <span class="text-charcoal">{study.data.technologies || 'Multiple technologies used'}</span>
+                </p>
+              </div>
+            </article>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-16">
+    <div class="container mx-auto px-6">
+      <ContactCTA
+        title="Have a Similar Challenge?"
+        description="Let's discuss how we can apply our experience to your specific situation."
+      />
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .prose :global(h2) {
+    @apply font-heading text-2xl font-bold text-charcoal mt-8 mb-4;
+  }
+
+  .prose :global(h3) {
+    @apply font-heading text-xl font-semibold text-charcoal mt-6 mb-3;
+  }
+
+  .prose :global(p) {
+    @apply text-charcoal-light mb-4;
+  }
+
+  .prose :global(ul) {
+    @apply list-disc list-inside space-y-2 text-charcoal-light;
+  }
+
+  .prose :global(li) {
+    @apply text-charcoal-light;
+  }
+
+  .prose :global(strong) {
+    @apply text-charcoal font-semibold;
+  }
+</style>

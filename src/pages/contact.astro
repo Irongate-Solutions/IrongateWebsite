@@ -1,0 +1,62 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+import ContactForm from '@components/ContactForm.astro';
+import company from '@data/company.json';
+---
+
+<BaseLayout
+  title="Contact Us"
+  description="Get in touch with Irongate Solutions to discuss your enterprise integration and custom development needs."
+>
+  <section class="py-16">
+    <div class="container mx-auto px-6">
+      <div class="max-w-4xl mx-auto">
+        <div class="grid md:grid-cols-2 gap-12">
+          <!-- Contact Info -->
+          <div>
+            <h1 class="font-heading text-4xl font-bold text-charcoal mb-6">
+              Let's Discuss Your Project
+            </h1>
+            <p class="text-lg text-charcoal-light mb-8">
+              Tell us about your integration challenges, technical requirements, or custom development needs. We'll respond within one business day.
+            </p>
+
+            <div class="space-y-6">
+              <div>
+                <h3 class="font-medium text-charcoal mb-2">Email</h3>
+                <a
+                  href={`mailto:${company.email}`}
+                  class="text-copper hover:text-copper-dark transition-colors"
+                >
+                  {company.email}
+                </a>
+              </div>
+
+              <div>
+                <h3 class="font-medium text-charcoal mb-2">Location</h3>
+                <p class="text-charcoal-light">
+                  {company.address.city}, {company.address.state}
+                </p>
+              </div>
+
+              <div>
+                <h3 class="font-medium text-charcoal mb-2">What to Expect</h3>
+                <ul class="space-y-2 text-charcoal-light">
+                  <li>• Response within 24 hours</li>
+                  <li>• Free initial consultation</li>
+                  <li>• No sales pressure or lengthy discovery processes</li>
+                  <li>• Honest assessment of whether we can help</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- Contact Form -->
+          <div class="bg-white p-8 rounded-lg border border-charcoal/10">
+            <ContactForm source="contact-page" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

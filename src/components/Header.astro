@@ -1,0 +1,78 @@
+---
+import navigation from '@data/navigation.json';
+
+const currentPath = Astro.url.pathname;
+---
+
+<header class="sticky top-0 z-50 bg-white shadow-sm">
+  <nav class="container mx-auto px-6 pt-4 pb-0">
+    <div class="flex justify-between items-center">
+      <a href="/" class="flex items-center space-x-2">
+        <img src="/assets/logo.svg" alt="Irongate Solutions" class="h-30 w-auto max-w-[300px]">
+      </a>
+
+      <!-- Desktop Navigation -->
+      <ul class="hidden md:flex space-x-8">
+        {navigation.main.map((item) => (
+          <li>
+            <a
+              href={item.href}
+              class={`font-medium transition-colors hover:text-copper ${
+                currentPath === item.href ? 'text-copper' : 'text-charcoal'
+              }`}
+              aria-current={currentPath === item.href ? 'page' : undefined}
+            >
+              {item.label}
+            </a>
+          </li>
+        ))}
+      </ul>
+
+      <!-- Mobile Menu Button -->
+      <button
+        id="mobile-menu-toggle"
+        class="md:hidden p-2"
+        aria-label="Toggle navigation menu"
+        aria-expanded="false"
+      >
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Mobile Navigation -->
+    <div id="mobile-menu" class="hidden md:hidden mt-4 pb-4">
+      <ul class="space-y-4">
+        {navigation.main.map((item) => (
+          <li>
+            <a
+              href={item.href}
+              class={`block font-medium transition-colors hover:text-copper ${
+                currentPath === item.href ? 'text-copper' : 'text-charcoal'
+              }`}
+            >
+              {item.label}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </nav>
+</header>
+
+<script>
+  const toggle = document.getElementById('mobile-menu-toggle');
+  const menu = document.getElementById('mobile-menu');
+
+  toggle?.addEventListener('click', () => {
+    const isOpen = menu?.classList.contains('hidden');
+    if (isOpen) {
+      menu?.classList.remove('hidden');
+      toggle.setAttribute('aria-expanded', 'true');
+    } else {
+      menu?.classList.add('hidden');
+      toggle.setAttribute('aria-expanded', 'false');
+    }
+  });
+</script>

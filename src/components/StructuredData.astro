@@ -1,0 +1,23 @@
+---
+import company from '@data/company.json';
+
+const structuredData = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": company.name,
+  "url": import.meta.env.PUBLIC_SITE_URL,
+  "email": company.email,
+  "foundingDate": company.founded.toString(),
+  "description": company.tagline,
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": company.address.city,
+    "addressRegion": company.address.state,
+    "postalCode": company.address.zip,
+    "addressCountry": "US"
+  },
+  "sameAs": []
+};
+---
+
+<script type="application/ld+json" set:html={JSON.stringify(structuredData)} />

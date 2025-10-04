@@ -1,0 +1,91 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+import company from '@data/company.json';
+---
+
+<BaseLayout
+  title="Privacy Policy"
+  description="Privacy policy for Irongate Solutions website and services."
+  noIndex={true}
+>
+  <section class="py-16">
+    <div class="container mx-auto px-6">
+      <div class="max-w-3xl mx-auto prose prose-lg">
+        <h1 class="font-heading text-4xl font-bold text-charcoal mb-6">Privacy Policy</h1>
+        <p class="text-sm text-charcoal-light mb-8">Last Updated: {new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</p>
+
+        <h2>Information We Collect</h2>
+        <p>When you contact us or subscribe to updates, we collect:</p>
+        <ul>
+          <li>Name and email address (required)</li>
+          <li>Company name (optional)</li>
+          <li>Message content (for contact forms)</li>
+          <li>Basic analytics data (page views, referrer information)</li>
+        </ul>
+
+        <h2>How We Use Your Information</h2>
+        <p>We use collected information to:</p>
+        <ul>
+          <li>Respond to your inquiries and provide requested services</li>
+          <li>Send technical insights and case studies (only if you subscribe)</li>
+          <li>Improve our website and services</li>
+          <li>Comply with legal requirements</li>
+        </ul>
+
+        <h2>Data Storage and Security</h2>
+        <p>
+          Your data is processed through secure webhooks and stored in encrypted databases. We implement industry-standard security measures to protect your information.
+        </p>
+
+        <h2>Third-Party Services</h2>
+        <p>We use the following third-party services:</p>
+        <ul>
+          <li>N8N for form processing and automation</li>
+          <li>Netlify for website hosting</li>
+          <li>Analytics services (when enabled)</li>
+        </ul>
+
+        <h2>Your Rights</h2>
+        <p>You have the right to:</p>
+        <ul>
+          <li>Access your personal data</li>
+          <li>Request data deletion</li>
+          <li>Unsubscribe from communications at any time</li>
+          <li>Request data portability</li>
+        </ul>
+
+        <h2>Cookies</h2>
+        <p>
+          We use minimal cookies necessary for website functionality and analytics. You can disable cookies in your browser settings, though this may affect site functionality.
+        </p>
+
+        <h2>Contact</h2>
+        <p>
+          For privacy-related questions or requests, contact us at{' '}
+          <a href={`mailto:${company.email}`} class="text-copper hover:text-copper-dark">
+            {company.email}
+          </a>
+        </p>
+
+        <h2>Changes to This Policy</h2>
+        <p>
+          We may update this privacy policy as our practices evolve. Significant changes will be communicated via email to subscribers.
+        </p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .prose h2 {
+    @apply font-heading text-2xl font-bold text-charcoal mt-8 mb-4;
+  }
+
+  .prose p {
+    @apply text-charcoal-light mb-4;
+  }
+
+  .prose ul {
+    @apply list-disc list-inside space-y-2 text-charcoal-light mb-6;
+  }
+</style>
