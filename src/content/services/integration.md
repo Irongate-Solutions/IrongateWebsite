@@ -4,16 +4,9 @@ slug: integration
 order: 1
 ---
 
----
-
-title: System Integration
-slug: integration
-order: 1
---------
-
 ### Built for Your Reality
 
-Your operations already work—ERP, floor systems, spreadsheets, vendor portals. Our role isn’t a one-off fix. It’s to **define and build** integrations that stabilize flow now and set up a long-term, compounding improvement cycle—without disrupting production.
+Your operations already work—ERP, floor systems, spreadsheets, vendor portals. Our role isn’t a one-off fix. It’s to **define and build** custom integrations that stabilize flow now and set up a long-term, compounding improvement cycle—without disrupting production.
 
 ### Partnership, Not Projects
 
