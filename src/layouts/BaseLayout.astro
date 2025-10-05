@@ -2,7 +2,10 @@
 import Header from '@components/Header.astro';
 import Footer from '@components/Footer.astro';
 import StructuredData from '@components/StructuredData.astro';
+import UnderConstruction from '@components/UnderConstruction.astro';
 import '../styles/global.css';
+
+const underConstruction = import.meta.env.PUBLIC_UNDER_CONSTRUCTION === 'true';
 
 export interface Props {
   title: string;
@@ -70,10 +73,16 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
   <StructuredData />
 </head>
 <body class="bg-linen text-charcoal min-h-screen flex flex-col">
-  <Header />
-  <main class="flex-grow">
-    <slot />
-  </main>
-  <Footer />
+  {underConstruction ? (
+    <UnderConstruction />
+  ) : (
+    <>
+      <Header />
+      <main class="flex-grow">
+        <slot />
+      </main>
+      <Footer />
+    </>
+  )}
 </body>
 </html>

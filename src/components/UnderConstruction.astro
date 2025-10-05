@@ -1,0 +1,38 @@
+---
+// Under Construction Page Component
+---
+
+<div class="min-h-screen flex items-center justify-center bg-linen px-4">
+  <div class="max-w-2xl w-full text-center">
+    <!-- Icon/Logo -->
+    <div class="mb-8">
+      <svg class="w-24 h-24 mx-auto text-rust" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path>
+      </svg>
+    </div>
+
+    <!-- Heading -->
+    <h1 class="font-heading text-5xl md:text-6xl font-bold text-charcoal mb-6">
+      Under Construction
+    </h1>
+
+    <!-- Message -->
+    <p class="text-xl md:text-2xl text-charcoal/80 mb-4">
+      We're building something great!
+    </p>
+
+    <p class="text-lg text-charcoal/60 max-w-lg mx-auto">
+      Our website is currently under construction. We're working hard to bring you an exceptional experience. Please check back soon.
+    </p>
+
+    <!-- Optional: Contact info -->
+    <div class="mt-12 pt-8 border-t border-charcoal/10">
+      <p class="text-charcoal/60">
+        Need to reach us? Email us at
+        <a href={`mailto:${import.meta.env.PUBLIC_COMPANY_EMAIL || 'contact@irongatesolutions.com'}`} class="text-rust hover:text-rust/80 underline">
+          {import.meta.env.PUBLIC_COMPANY_EMAIL || 'contact@irongatesolutions.com'}
+        </a>
+      </p>
+    </div>
+  </div>
+</div>
