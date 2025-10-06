@@ -1,15 +1,19 @@
 {
-  "name": "Irongate Solutions",
-  "founded": 2024,
-  "tagline": "Enterprise Integration & Custom Development",
+  "name": "Irongate Solutions LLC",
+  "founded": 2025,
+  "tagline": "Integration & Custom Software Development",
   "email": "contact@irongatesolutions.com",
   "address": {
-    "city": "Minneapolis",
-    "state": "MN",
-    "zip": "55401"
+    "city": "Indianapolis",
+    "state": "IN",
+    "zip": "46250"
   },
   "philosophy": {
     "title": "Built for the Long Term",
     "description": "We engineer solutions that scale with your business, not against it. Every integration, every line of code, every data pipeline is designed with maintainability and evolution in mind."
+  },
+  "guidingScripture": {
+    "citation": "Proverbs 3:6 KJV",
+    "text": "In all thy ways acknowledge him, and he shall direct thy paths."  
   }
 }

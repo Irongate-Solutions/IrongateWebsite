@@ -5,6 +5,7 @@ export interface Props {
 
 const { source } = Astro.props;
 const webhookUrl = import.meta.env.PUBLIC_N8N_CONTACT_WEBHOOK;
+const authKey = import.meta.env.PUBLIC_N8N_AUTH_KEY;
 ---
 
 <form id="contact-form" class="space-y-6" data-source={source}>
@@ -61,7 +62,7 @@ const webhookUrl = import.meta.env.PUBLIC_N8N_CONTACT_WEBHOOK;
   <div id="form-status" class="hidden text-sm"></div>
 </form>
 
-<script define:vars={{ webhookUrl }}>
+<script define:vars={{ webhookUrl, authKey }}>
   const form = document.getElementById('contact-form');
   const status = document.getElementById('form-status');
 
@@ -84,7 +85,10 @@ const webhookUrl = import.meta.env.PUBLIC_N8N_CONTACT_WEBHOOK;
 
       const response = await fetch(webhookUrl, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${authKey}`
+        },
         body: JSON.stringify(data)
       });
 
