@@ -1,0 +1,8 @@
+How it all started
+Our journey began in 1991 when our founder, Ronald Frank, took a leap of faith to start Maranatha Software. With a young family to support and a vision fueled by his strong faith, Ronald embarked on this venture amidst the burgeoning digital era. His commitment to excellence, driven by a passion for technology and a desire to provide for his family, laid the foundation for what Maranatha Software is today. Our name, ‘Maranatha,’ an Aramaic word meaning ‘Come, Oh Lord,’ signifies the faith and hope that sparked this journey.
+
+Our story
+Maranatha Software has grown from a one-man operation to a family-led team, deeply rooted in our Christian values. As the family grew, so did the company, with each member bringing unique skills and perspectives. This growth mirrored the evolution of technology, allowing us to stay ahead of trends while grounding our services in time-tested values. Our story is one of perseverance, innovation, and commitment, always remembering that our work is not just about writing code but about making a positive impact through technology.
+
+Our approach
+Our approach is simple yet profound: blend cutting-edge technology with a personal touch. We treat every project as more than just a task; it’s an opportunity to create a lasting positive impact. Our solutions are custom-tailored to each client’s needs, ensuring they not only solve immediate challenges but also pave the way for future success. Ethics, integrity, and honesty guide our process, reflecting our commitment to not just meet but exceed expectations in every endeavor.

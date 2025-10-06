@@ -2,28 +2,18 @@
 title: System Integration
 slug: integration
 order: 1
----
+icon: /assets/icons/integration.svg
+thumbnail: /assets/services/integration-thumb.jpg
+-------------------------------------------------
 
-### Built for Your Reality
+### Make Systems Speak the Same Language
 
-Your operations already work—ERP, floor systems, spreadsheets, vendor portals. Our role isn’t a one-off fix. It’s to **define and build** custom integrations that stabilize flow now and set up a long-term, compounding improvement cycle—without disrupting production.
+ERP, floor systems, scanners, spreadsheets, vendor portals—many moving parts, one operation. We **define and build** integrations that make them act like a single system: clean handoffs, consistent data, steady flow.
 
-### Partnership, Not Projects
+### Change Without Shutdowns
 
-We don’t do drive-by development. We become the team that knows your processes, version-controls change, and delivers small, safe increments that add up to measurable value. No black boxes. No big-bangs. Business first.
+No big-bang cutovers. We learn your process, stage changes, and ship in safe steps with rollback and monitoring. Interfaces stay simple, rules are explicit, and every change is version-controlled. Business first.
 
-### Steps
+### Flow You Can Trust
 
- **Discovery & Mapping**
-  Understand current flows, failure modes, and success criteria tied to throughput, quality, and labor. Define contracts and ownership so nothing is implicit.
-
-**Roadmap Creation (small → large)**
-  Prioritize work from quick wins to deeper redesigns. Sequence by risk and ROI, with clear interfaces and cutover plans so upgrades don’t break the line.
-
-**Minimum Viable Creation**
-  Build the smallest, safest slice that unblocks value. Ship with observability, idempotency, and rollback. Prove it, then expand.
-
-### What You Get
-
-Lower operational drag, fewer surprises, and integrations shaped to your workflow—not the other way around. Predictable change that keeps production moving while the system keeps getting better.
-
+Fewer manual steps and re-keying; data that matches across systems; faster cycle times with fewer surprises; clear support playbooks; and integrations shaped to your workflow so production keeps moving while capability compounds.

@@ -2,69 +2,134 @@
 import BaseLayout from '@layouts/BaseLayout.astro';
 import ContactCTA from '@components/ContactCTA.astro';
 import company from '@data/company.json';
+
+// Calculate years in business
+const currentYear = new Date().getFullYear();
+const yearsInBusiness = currentYear - company.founded;
 ---
 
 <BaseLayout
   title="About Us"
   description="Learn about Irongate Solutions and our approach to enterprise integration and custom development."
 >
-  <!-- Hero Section -->
-  <section class="bg-white py-16">
+  <!-- Hero Section with Visual Identity -->
+  <section class="relative bg-gradient-to-br from-slate-50 to-white py-20">
     <div class="container mx-auto px-6">
-      <div class="max-w-3xl">
-        <h1 class="font-heading text-4xl font-bold text-charcoal mb-6">
+      <div class="max-w-4xl mx-auto text-center">
+        <div class="inline-block px-4 py-2 bg-copper/10 text-copper font-semibold rounded-full text-sm mb-6">
+          Based in {company.address.city}, {company.address.state}
+        </div>
+        <h1 class="font-heading text-5xl lg:text-6xl font-bold text-charcoal mb-6">
           Engineering Solutions for Business Problems
         </h1>
-        <p class="text-xl text-charcoal-light">
-          Based in {company.address.city}, we help enterprises solve the technical challenges that prevent them from scaling.
+        <p class="text-xl text-charcoal-light max-w-2xl mx-auto">
+          We help small to mid-size companies solve the technical challenges that prevent them from scaling.
         </p>
       </div>
     </div>
   </section>
 
-  <!-- Philosophy -->
-  <section class="py-16">
+  <!-- Stats Bar -->
+  <section class="bg-charcoal text-white py-12">
     <div class="container mx-auto px-6">
-      <div class="max-w-3xl mx-auto">
-        <h2 class="font-heading text-3xl font-bold mb-6">{company.philosophy.title}</h2>
-        <p class="text-lg text-charcoal-light mb-8">
-          {company.philosophy.description}
-        </p>
+      <div class="max-w-5xl mx-auto grid grid-cols-2 md:grid-cols-3 gap-8 text-center">       
+        <div class="stat-item">
+          <div class="text-4xl font-bold text-copper mb-2">50+</div>
+          <div class="text-sm text-white/70">Projects Delivered</div>
+        </div>
+        <div class="stat-item">
+          <div class="text-4xl font-bold text-copper mb-2">99%</div>
+          <div class="text-sm text-white/70">Client Satisfaction</div>
+        </div>
+        <div class="stat-item">
+          <div class="text-4xl font-bold text-copper mb-2">&lt;6mo</div>
+          <div class="text-sm text-white/70">Average Project Duration</div>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- How We Work -->
-  <section class="bg-white py-16">
+  <!-- Philosophy Section with Visual Split -->
+  <section class="py-20 bg-white">
     <div class="container mx-auto px-6">
-      <div class="max-w-3xl mx-auto">
-        <h2 class="font-heading text-3xl font-bold mb-8">How We Work</h2>
-
-        <div class="space-y-8">
+      <div class="max-w-5xl mx-auto">
+        <div class="grid lg:grid-cols-2 gap-12 items-center">
           <div>
-            <h3 class="font-heading text-xl font-semibold text-charcoal mb-3">No Vendor Lock-In</h3>
-            <p class="text-charcoal-light">
+            <div class="w-full h-80 bg-gradient-to-br from-copper/20 to-charcoal/5 rounded-lg flex items-center justify-center">
+              <svg class="w-32 h-32 text-copper" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+              </svg>
+            </div>
+          </div>
+          <div>
+            <h2 class="font-heading text-4xl font-bold text-charcoal mb-6">{company.philosophy.title}</h2>
+            <p class="text-lg text-charcoal-light leading-relaxed">
+              {company.philosophy.description}
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How We Work - Card Grid -->
+  <section class="bg-slate-50 py-20">
+    <div class="container mx-auto px-6">
+      <div class="max-w-6xl mx-auto">
+        <h2 class="font-heading text-4xl font-bold text-center text-charcoal mb-4">How We Work</h2>
+        <p class="text-center text-charcoal-light mb-12 text-lg">
+          Our principles guide every project we take on
+        </p>
+
+        <div class="grid md:grid-cols-2 gap-6">
+          <!-- Card 1: No Vendor Lock-In -->
+          <div class="value-card bg-white rounded-lg p-8 shadow-sm border border-charcoal/10 hover:shadow-md transition-shadow duration-200">
+            <div class="w-14 h-14 bg-copper/10 rounded-lg flex items-center justify-center mb-4">
+              <svg class="w-7 h-7 text-copper" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 11V7a4 4 0 118 0m-4 8v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2z" />
+              </svg>
+            </div>
+            <h3 class="font-heading text-2xl font-semibold text-charcoal mb-3">No Vendor Lock-In</h3>
+            <p class="text-charcoal-light leading-relaxed">
               We build solutions using open standards and well-documented technologies. You own the code, you understand the architecture, and you can maintain it without us if needed.
             </p>
           </div>
 
-          <div>
-            <h3 class="font-heading text-xl font-semibold text-charcoal mb-3">Technical Honesty</h3>
-            <p class="text-charcoal-light">
+          <!-- Card 2: Technical Honesty -->
+          <div class="value-card bg-white rounded-lg p-8 shadow-sm border border-charcoal/10 hover:shadow-md transition-shadow duration-200">
+            <div class="w-14 h-14 bg-copper/10 rounded-lg flex items-center justify-center mb-4">
+              <svg class="w-7 h-7 text-copper" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+            </div>
+            <h3 class="font-heading text-2xl font-semibold text-charcoal mb-3">Technical Honesty</h3>
+            <p class="text-charcoal-light leading-relaxed">
               If a $200/month SaaS tool solves your problem, we'll tell you. We only build custom solutions when they genuinely provide better value than existing alternatives.
             </p>
           </div>
 
-          <div>
-            <h3 class="font-heading text-xl font-semibold text-charcoal mb-3">Built to Last</h3>
-            <p class="text-charcoal-light">
+          <!-- Card 3: Built to Last -->
+          <div class="value-card bg-white rounded-lg p-8 shadow-sm border border-charcoal/10 hover:shadow-md transition-shadow duration-200">
+            <div class="w-14 h-14 bg-copper/10 rounded-lg flex items-center justify-center mb-4">
+              <svg class="w-7 h-7 text-copper" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+              </svg>
+            </div>
+            <h3 class="font-heading text-2xl font-semibold text-charcoal mb-3">Built to Last</h3>
+            <p class="text-charcoal-light leading-relaxed">
               We don't chase trends or over-engineer. Every technical decision prioritizes long-term maintainability, clear documentation, and operational simplicity.
             </p>
           </div>
 
-          <div>
-            <h3 class="font-heading text-xl font-semibold text-charcoal mb-3">Transparent Pricing</h3>
-            <p class="text-charcoal-light">
+          <!-- Card 4: Transparent Pricing -->
+          <div class="value-card bg-white rounded-lg p-8 shadow-sm border border-charcoal/10 hover:shadow-md transition-shadow duration-200">
+            <div class="w-14 h-14 bg-copper/10 rounded-lg flex items-center justify-center mb-4">
+              <svg class="w-7 h-7 text-copper" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
+              </svg>
+            </div>
+            <h3 class="font-heading text-2xl font-semibold text-charcoal mb-3">Transparent Pricing</h3>
+            <p class="text-charcoal-light leading-relaxed">
               Fixed-price projects when scope is clear. Time-and-materials when exploration is needed. Either way, you'll know exactly what you're paying for and why.
             </p>
           </div>
@@ -73,23 +138,54 @@ import company from '@data/company.json';
     </div>
   </section>
 
-  <!-- Who We Serve -->
-  <section class="py-16">
+  <!-- Who We Serve - Visual Layout -->
+  <section class="py-20 bg-white">
     <div class="container mx-auto px-6">
-      <div class="max-w-3xl mx-auto">
-        <h2 class="font-heading text-3xl font-bold mb-6">Who We Work With</h2>
-        <p class="text-lg text-charcoal-light mb-6">
-          We specialize in helping mid-size to enterprise companies (50-5000 employees) across healthcare, manufacturing, logistics, and financial services.
-        </p>
-        <p class="text-lg text-charcoal-light">
-          If you're dealing with legacy system integration, data silos preventing scaling, or workflows that require custom automation, we should talk.
-        </p>
+      <div class="max-w-5xl mx-auto">
+        <div class="grid lg:grid-cols-2 gap-12 items-center">
+          <div class="order-2 lg:order-1">
+            <h2 class="font-heading text-4xl font-bold text-charcoal mb-6">Who We Work With</h2>
+            <p class="text-lg text-charcoal-light mb-6 leading-relaxed">
+              We specialize in helping mid-size to enterprise companies (50-5000 employees) across manufacturing, distribution, and professional services.
+            </p>
+            <p class="text-lg text-charcoal-light leading-relaxed">
+              If you're dealing with legacy system integration, data silos preventing scaling, or workflows that require custom automation, we should talk.
+            </p>
+            
+            <!-- Industries List -->
+            <div class="mt-8 grid grid-cols-2 gap-4">
+              <div class="flex items-center gap-3">
+                <div class="w-2 h-2 bg-copper rounded-full"></div>
+                <span class="text-charcoal-light">Manufacturing</span>
+              </div>
+              <div class="flex items-center gap-3">
+                <div class="w-2 h-2 bg-copper rounded-full"></div>
+                <span class="text-charcoal-light">Distribution</span>
+              </div>
+              <div class="flex items-center gap-3">
+                <div class="w-2 h-2 bg-copper rounded-full"></div>
+                <span class="text-charcoal-light">Food & Beverage</span>
+              </div>
+              <div class="flex items-center gap-3">
+                <div class="w-2 h-2 bg-copper rounded-full"></div>
+                <span class="text-charcoal-light">Professional Services</span>
+              </div>
+            </div>
+          </div>
+          <div class="order-1 lg:order-2">
+            <div class="w-full h-80 bg-gradient-to-br from-charcoal/5 to-copper/10 rounded-lg flex items-center justify-center">
+              <svg class="w-32 h-32 text-copper" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+              </svg>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- CTA Section -->
-  <section class="py-16">
+  <section class="py-16 bg-slate-50">
     <div class="container mx-auto px-6">
       <ContactCTA
         title="Let's Talk About Your Challenges"
@@ -98,3 +194,21 @@ import company from '@data/company.json';
     </div>
   </section>
 </BaseLayout>
+
+<style>
+  .stat-item {
+    transition: transform 0.2s ease;
+  }
+  
+  .stat-item:hover {
+    transform: translateY(-4px);
+  }
+
+  .value-card {
+    transition: all 0.3s ease;
+  }
+  
+  .value-card:hover {
+    transform: translateY(-4px);
+  }
+</style>

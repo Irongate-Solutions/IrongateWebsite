@@ -4,50 +4,45 @@ import ServiceCard from '@components/ServiceCard.astro';
 import CaseStudyCard from '@components/CaseStudyCard.astro';
 import EmailCapture from '@components/EmailCapture.astro';
 import company from '@data/company.json';
+import { getCollection } from 'astro:content';
 
 const services = [
   {
     title: "System Integration",
     description: "Connect disparate systems into cohesive workflows that actually work.",
-    slug: "integration"
+    slug: "integration",
+    icon: "/assets/icons/integration.svg",
+    thumbnail: "/assets/services/integration-thumb.jpg"
   },
   {
     title: "Custom Development",
     description: "Purpose-built solutions when off-the-shelf falls short.",
-    slug: "development"
+    slug: "development",
+    icon: "/assets/icons/development.svg",
+    thumbnail: "/assets/services/development-thumb.jpg"
   },
   {
     title: "Data & Analytics",
     description: "Transform raw data into actionable intelligence.",
-    slug: "analytics"
+    slug: "analytics",
+    icon: "/assets/icons/analytics.svg",
+    thumbnail: "/assets/services/analytics-thumb.jpg"
   }
 ];
 
-const caseStudies = [
-  {
-    title: "Healthcare Network Integration",
-    problem: "Seven systems, zero communication",
-    outcome: "$1.2M annual savings",
-    slug: "enterprise-integration"
-  },
-  {
-    title: "Custom Manufacturing Platform",
-    problem: "Excel-based production tracking",
-    outcome: "60% faster order processing",
-    slug: "custom-platform"
-  },
-  {
-    title: "Real-time Analytics Pipeline",
-    problem: "Week-old reports driving daily decisions",
-    outcome: "Sub-minute data freshness",
-    slug: "data-pipeline"
-  }
-];
+// Load case studies from content collection, sort by date (newest first), take first 3
+const allCaseStudies = await getCollection('case-studies');
+const sortedCaseStudies = allCaseStudies.sort((a, b) => {
+  const dateA = a.data.date ? new Date(a.data.date).getTime() : 0;
+  const dateB = b.data.date ? new Date(b.data.date).getTime() : 0;
+  return dateB - dateA; // Newest first
+});
+const recentCaseStudies = sortedCaseStudies.slice(0, 3);
 ---
 
 <BaseLayout
-  title="Enterprise Integration & Custom Development"
-  description="We build the technical infrastructure that lets your business operate at scale."
+  title="System Integration & Custom Development"
+  description="We build the technical infrastructure that helps small to mid-size businesses operate efficiently."
 >
   <!-- Hero Section -->
   <section class="bg-white py-20">
@@ -93,8 +88,14 @@ const caseStudies = [
     <div class="container mx-auto px-6">
       <h2 class="font-heading text-3xl font-bold text-center mb-12">Recent Work</h2>
       <div class="grid md:grid-cols-3 gap-8">
-        {caseStudies.map(study => (
-          <CaseStudyCard {...study} />
+        {recentCaseStudies.map(study => (
+          <CaseStudyCard
+            title={study.data.title}
+            problem={study.data.problem || 'Challenge'}
+            outcome={study.data.outcome || 'Success'}
+            slug={study.data.slug}
+            thumbnail={study.data.thumbnail}
+          />
         ))}
       </div>
     </div>

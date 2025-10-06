@@ -3,12 +3,34 @@ export interface Props {
   title: string;
   description: string;
   slug: string;
+  icon?: string;
+  thumbnail?: string;
 }
 
-const { title, description, slug } = Astro.props;
+const { title, description, slug, icon, thumbnail } = Astro.props;
 ---
 
 <div class="bg-slate-50 p-6 rounded-lg border border-charcoal/10 hover:border-copper transition-colors">
+  {icon && (
+    <div class="mb-4 service-icon-wrapper">
+      <img
+        src={icon}
+        alt={`${title} icon`}
+        class="w-12 h-12"
+        onerror="this.parentElement.style.display='none'"
+      />
+    </div>
+  )}
+  {thumbnail && (
+    <div class="mb-4 rounded-md overflow-hidden service-thumbnail-wrapper">
+      <img
+        src={thumbnail}
+        alt={title}
+        class="w-full h-48 object-cover"
+        onerror="this.parentElement.style.display='none'"
+      />
+    </div>
+  )}
   <h3 class="font-heading text-xl font-bold text-charcoal mb-3">{title}</h3>
   <p class="text-charcoal-light mb-4">{description}</p>
   <a

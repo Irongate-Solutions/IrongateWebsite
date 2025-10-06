@@ -2,23 +2,19 @@
 title: Custom Development
 slug: development
 order: 2
----
+icon: /assets/icons/development.svg
+thumbnail: /assets/services/development-thumb.jpg
+-------------------------------------------------
 
-## When Off-the-Shelf Falls Short
-Standard software platforms serve 80% of use cases well. We build solutions for the other 20%—the unique workflows, domain-specific requirements, and competitive differentiators that define your business.
+### Tailored Where It Matters
 
-## Our Approach
-We don't rebuild what already exists. We identify gaps in your current stack and build targeted solutions that integrate seamlessly with existing tools while providing the specific functionality you need.
+Most platforms cover the common case. The rest—the edges that actually run your business—need software shaped to fit. We **define and build** the missing pieces so work moves faster without rip-and-replace.
 
-## What We Build
-- Custom internal tools and dashboards
-- Industry-specific workflow automation
-- API layers for legacy system modernization
-- Specialized data processing pipelines
-- Integration middleware for complex ecosystems
+### Outcomes, Not One-Offs
 
-## Technology Stack
-- **Backend**: Python, Node.js, Go, .NET Core
-- **Frontend**: React, Vue.js, Svelte
-- **Databases**: PostgreSQL, MongoDB, Redis, DynamoDB
-- **Infrastructure**: Docker, Kubernetes, AWS, Azure, GCP
+We keep what already works and change the smallest thing that unlocks the most value. Releases are small and safe, ownership is clear, and every improvement compounds. No black boxes. Business first.
+
+### Results You Can Run
+
+Software that fits your workflow; clean extensions instead of fragile workarounds; dependable releases you can schedule around; plain-language docs and tests; and a path to modernize at your pace while the system keeps getting better.
+

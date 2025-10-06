@@ -4,62 +4,136 @@ import ContactCTA from '@components/ContactCTA.astro';
 import { getCollection } from 'astro:content';
 
 const caseStudies = await getCollection('case-studies');
+
+// Get unique industries for filtering
+const industries = [...new Set(caseStudies.map(study => study.data.industry))];
 ---
 
 <BaseLayout
   title="Our Work"
-  description="Real-world case studies showcasing enterprise integration, custom development, and data analytics solutions."
+  description="Real-world case studies showcasing system integration, custom development, and process automation solutions."
 >
-  <!-- Hero Section -->
-  <section class="bg-white py-16">
+  <!-- Hero Section with Featured Style -->
+  <section class="relative bg-gradient-to-br from-charcoal via-charcoal/95 to-copper/20 text-white py-24">
     <div class="container mx-auto px-6">
-      <div class="max-w-3xl">
-        <h1 class="font-heading text-4xl font-bold text-charcoal mb-6">
-          Case Studies: Problems We've Solved
+      <div class="max-w-4xl mx-auto text-center">
+        <div class="inline-block px-4 py-2 bg-white/10 backdrop-blur-sm text-white font-semibold rounded-full text-sm mb-6">
+          Portfolio
+        </div>
+        <h1 class="font-heading text-5xl lg:text-6xl font-bold mb-6">
+          Problems We've Solved
         </h1>
-        <p class="text-xl text-charcoal-light">
+        <p class="text-xl text-white/90 max-w-2xl mx-auto">
           Real challenges, technical solutions, measurable outcomes. No fluff, just engineering.
         </p>
       </div>
     </div>
   </section>
 
-  <!-- Case Studies -->
-  <section class="py-16">
-    <div class="container mx-auto px-6">
-      <div class="max-w-4xl mx-auto space-y-16">
-        {caseStudies.map((study) => (
-          <div id={study.data.slug} class="scroll-mt-20">
-            <article class="bg-white p-8 rounded-lg border border-charcoal/10">
-              <div class="mb-6">
-                <h2 class="font-heading text-3xl font-bold text-charcoal mb-3">
-                  {study.data.title}
-                </h2>
-                <div class="flex flex-wrap gap-4 text-sm text-charcoal/70">
-                  <span>Industry: {study.data.industry}</span>
-                  <span>•</span>
-                  <span>Duration: {study.data.duration}</span>
-                </div>
-              </div>
-
-              <div class="prose prose-lg max-w-none">
-                <div set:html={study.body} />
-              </div>
-
-              <div class="mt-6 pt-6 border-t border-charcoal/10">
-                <p class="text-sm text-charcoal/70">
-                  Technologies: <span class="text-charcoal">{study.data.technologies || 'Multiple technologies used'}</span>
-                </p>
-              </div>
-            </article>
-          </div>
+  <!-- Filter Bar -->
+  <section class="bg-white border-b border-charcoal/10 sticky top-20 z-40 shadow-sm">
+    <div class="container mx-auto px-6 py-4">
+      <div class="flex flex-wrap items-center gap-3">
+        <span class="text-sm font-semibold text-charcoal">Filter by Industry:</span>
+        <button
+          class="filter-btn px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 bg-copper text-white"
+          data-filter="all"
+        >
+          All Projects
+        </button>
+        {industries.map((industry) => (
+          <button
+            class="filter-btn px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 bg-slate-100 text-charcoal hover:bg-copper/10 hover:text-copper"
+            data-filter={industry}
+          >
+            {industry}
+          </button>
         ))}
       </div>
     </div>
   </section>
 
+  <!-- Case Studies Grid -->
+  <section class="py-16 bg-slate-50">
+    <div class="container mx-auto px-6">
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto" id="case-studies-grid">
+        {caseStudies.map(async (study) => {
+          const { Content } = await study.render();
+          
+          // Extract challenge and outcome from the content
+          const contentHtml = await study.render().then(r => r.Content);
+          
+          return (
+            <article
+              id={study.data.slug}
+              class="case-study-card group bg-white rounded-lg shadow-sm border border-charcoal/10 overflow-hidden hover:shadow-xl transition-all duration-300 flex flex-col scroll-mt-28"
+              data-industry={study.data.industry}
+            >
+              {/* Card Header */}
+              <div class="bg-gradient-to-br from-copper/5 to-charcoal/5 p-6 border-b border-charcoal/10">
+                <div class="flex items-start justify-between mb-3">
+                  <span class="inline-block px-3 py-1 bg-copper/10 text-copper text-xs font-semibold rounded-full">
+                    {study.data.industry}
+                  </span>
+                  <span class="text-xs text-charcoal/60">{study.data.duration}</span>
+                </div>
+                <h2 class="font-heading text-2xl font-bold text-charcoal group-hover:text-copper transition-colors duration-200">
+                  {study.data.title}
+                </h2>
+              </div>
+
+              {/* Card Body */}
+              <div class="p-6 flex-1 flex flex-col">
+                <div class="case-study-preview prose prose-sm max-w-none mb-4 flex-1">
+                  <Content />
+                </div>
+
+                {/* Technologies */}
+                {study.data.technologies && (
+                  <div class="pt-4 border-t border-charcoal/10 mt-auto">
+                    <p class="text-xs text-charcoal/60 mb-2">Technologies:</p>
+                    <div class="flex flex-wrap gap-2">
+                      {study.data.technologies.split(',').slice(0, 3).map((tech: string) => (
+                        <span class="px-2 py-1 bg-slate-100 text-charcoal text-xs rounded">
+                          {tech.trim()}
+                        </span>
+                      ))}
+                      {study.data.technologies.split(',').length > 3 && (
+                        <span class="px-2 py-1 bg-slate-100 text-charcoal/60 text-xs rounded">
+                          +{study.data.technologies.split(',').length - 3} more
+                        </span>
+                      )}
+                    </div>
+                  </div>
+                )}
+              </div>
+
+              {/* Card Footer - Read More */}
+              <div class="px-6 pb-6">
+                <button 
+                  class="read-more-btn w-full px-4 py-2 bg-charcoal text-white rounded-md hover:bg-copper transition-colors duration-200 text-sm font-semibold"
+                  data-study-slug={study.data.slug}
+                >
+                  View Full Case Study →
+                </button>
+              </div>
+            </article>
+          );
+        })}
+      </div>
+
+      {/* No results message */}
+      <div id="no-results" class="hidden text-center py-16">
+        <svg class="w-16 h-16 text-charcoal/30 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M12 12h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+        <p class="text-charcoal-light text-lg">No case studies found for this industry.</p>
+      </div>
+    </div>
+  </section>
+
   <!-- CTA Section -->
-  <section class="py-16">
+  <section class="py-16 bg-white">
     <div class="container mx-auto px-6">
       <ContactCTA
         title="Have a Similar Challenge?"
@@ -67,9 +141,64 @@ const caseStudies = await getCollection('case-studies');
       />
     </div>
   </section>
+
+  {/* Modal for Full Case Study */}
+  <div id="case-study-modal" class="hidden fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+    <div class="bg-white rounded-lg max-w-4xl w-full max-h-[90vh] overflow-y-auto shadow-2xl">
+      <div class="sticky top-0 bg-white border-b border-charcoal/10 p-6 flex items-center justify-between">
+        <h2 id="modal-title" class="font-heading text-3xl font-bold text-charcoal"></h2>
+        <button id="close-modal" class="p-2 hover:bg-slate-100 rounded-full transition-colors">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+      <div id="modal-content" class="p-8 prose prose-lg max-w-none">
+        {/* Content will be injected here */}
+      </div>
+    </div>
+  </div>
 </BaseLayout>
 
 <style>
+  .case-study-card {
+    transition: all 0.3s ease;
+  }
+  
+  .case-study-card:hover {
+    transform: translateY(-8px);
+  }
+
+  .filter-btn.active {
+    @apply bg-copper text-white;
+  }
+
+  /* Limit preview content */
+  .case-study-preview {
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .case-study-preview :global(h2),
+  .case-study-preview :global(h3) {
+    @apply text-base font-semibold text-charcoal mb-2 mt-0;
+  }
+
+  .case-study-preview :global(p) {
+    @apply text-sm text-charcoal-light mb-2 leading-relaxed;
+  }
+
+  .case-study-preview :global(ul) {
+    @apply hidden;
+  }
+
+  /* Modal styling */
+  #case-study-modal.show {
+    display: flex;
+  }
+
   .prose :global(h2) {
     @apply font-heading text-2xl font-bold text-charcoal mt-8 mb-4;
   }
@@ -79,11 +208,11 @@ const caseStudies = await getCollection('case-studies');
   }
 
   .prose :global(p) {
-    @apply text-charcoal-light mb-4;
+    @apply text-charcoal-light mb-4 leading-relaxed;
   }
 
   .prose :global(ul) {
-    @apply list-disc list-inside space-y-2 text-charcoal-light;
+    @apply list-disc list-inside space-y-2 text-charcoal-light ml-4;
   }
 
   .prose :global(li) {
@@ -93,4 +222,145 @@ const caseStudies = await getCollection('case-studies');
   .prose :global(strong) {
     @apply text-charcoal font-semibold;
   }
+
+  /* Highlight animation for direct links */
+  @keyframes highlight-pulse {
+    0%, 100% {
+      box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+      border-color: rgba(54, 69, 79, 0.1);
+    }
+    50% {
+      box-shadow: 0 0 0 3px rgba(184, 115, 51, 0.3), 0 10px 25px -5px rgba(184, 115, 51, 0.2);
+      border-color: rgba(184, 115, 51, 0.5);
+    }
+  }
 </style>
+
+<script>
+  // Filter functionality
+  const filterButtons = document.querySelectorAll('.filter-btn');
+  const caseStudyCards = document.querySelectorAll('.case-study-card');
+  const noResults = document.getElementById('no-results');
+
+  filterButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      const filter = button.getAttribute('data-filter');
+      
+      // Update active button
+      filterButtons.forEach(btn => btn.classList.remove('active', 'bg-copper', 'text-white'));
+      filterButtons.forEach(btn => btn.classList.add('bg-slate-100', 'text-charcoal'));
+      button.classList.add('active', 'bg-copper', 'text-white');
+      button.classList.remove('bg-slate-100', 'text-charcoal');
+      
+      // Filter cards
+      let visibleCount = 0;
+      caseStudyCards.forEach(card => {
+        const cardIndustry = card.getAttribute('data-industry');
+        if (filter === 'all' || cardIndustry === filter) {
+          card.classList.remove('hidden');
+          visibleCount++;
+        } else {
+          card.classList.add('hidden');
+        }
+      });
+      
+      // Show/hide no results message
+      if (visibleCount === 0) {
+        noResults?.classList.remove('hidden');
+      } else {
+        noResults?.classList.add('hidden');
+      }
+    });
+  });
+
+  // Modal functionality
+  const modal = document.getElementById('case-study-modal');
+  const modalTitle = document.getElementById('modal-title');
+  const modalContent = document.getElementById('modal-content');
+  const closeModalBtn = document.getElementById('close-modal');
+  const readMoreButtons = document.querySelectorAll('.read-more-btn');
+
+  readMoreButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      const card = button.closest('.case-study-card');
+      const title = card?.querySelector('h2')?.textContent || '';
+      const fullContent = card?.querySelector('.case-study-preview')?.innerHTML || '';
+      
+      if (modalTitle && modalContent) {
+        modalTitle.textContent = title;
+        modalContent.innerHTML = fullContent;
+      }
+      
+      modal?.classList.add('show');
+      modal?.classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+    });
+  });
+
+  closeModalBtn?.addEventListener('click', () => {
+    modal?.classList.remove('show');
+    modal?.classList.add('hidden');
+    document.body.style.overflow = '';
+  });
+
+  // Close modal on backdrop click
+  modal?.addEventListener('click', (e) => {
+    if (e.target === modal) {
+      modal?.classList.remove('show');
+      modal?.classList.add('hidden');
+      document.body.style.overflow = '';
+    }
+  });
+
+  // Close modal on escape key
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && modal?.classList.contains('show')) {
+      modal?.classList.remove('show');
+      modal?.classList.add('hidden');
+      document.body.style.overflow = '';
+    }
+  });
+
+  // Open case study modal directly from URL hash
+  function openCaseStudyFromHash() {
+    const hash = window.location.hash;
+
+    if (!hash) return;
+
+    const targetId = hash.substring(1);
+    const targetCard = document.getElementById(targetId);
+
+    if (targetCard) {
+      // Ensure card is visible (not filtered out)
+      if (targetCard.classList.contains('hidden')) {
+        targetCard.classList.remove('hidden');
+        // Reset filters to "all"
+        const allButton = document.querySelector('[data-filter="all"]');
+        if (allButton) {
+          allButton.click();
+        }
+      }
+
+      // Open the modal directly
+      const readMoreBtn = targetCard.querySelector('.read-more-btn');
+      if (readMoreBtn) {
+        readMoreBtn.click();
+      }
+    }
+  }
+
+  // Use DOMContentLoaded for faster execution
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => {
+      setTimeout(openCaseStudyFromHash, 100);
+    });
+  } else {
+    // DOM is already ready
+    setTimeout(openCaseStudyFromHash, 100);
+  }
+
+  // Trigger on hash change (for same-page navigation)
+  window.addEventListener('hashchange', () => {
+    setTimeout(openCaseStudyFromHash, 100);
+  });
+</script>

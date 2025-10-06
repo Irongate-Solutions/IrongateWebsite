@@ -10,20 +10,28 @@ export interface Service {
   description: string;
   features: string[];
   technologies: string[];
+  icon?: string;
+  thumbnail?: string;
 }
 
 export interface CaseStudy {
   title: string;
   slug: string;
   client: string;
-  challenge: string;
-  solution: string;
-  outcome: string;
-  technologies: string[];
+  problem?: string;
+  challenge?: string;
+  solution?: string;
+  outcome?: string;
+  technologies?: string[];
+  date?: Date | string;
+  industry?: string;
+  duration?: string;
   metrics?: {
     label: string;
     value: string;
   }[];
+  thumbnail?: string;
+  heroImage?: string;
 }
 
 export interface CompanyInfo {
