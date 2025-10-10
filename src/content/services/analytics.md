@@ -16,4 +16,4 @@ We don’t hand you a shiny dashboard and vanish. We start with the decisions yo
 
 ### Insight Without the Overhead
 
-Fewer spreadsheet gymnastics, one version of the truth, and visibility where it helps with guardrails where it matters. A foundation that scales as you grow—and forecasts you can actually plan against—so decisions get better while the system keeps improving.
+Fewer spreadsheet gymnastics, one version of the truth, and visibility where it helps with guardrails where it matters. A foundation that scales as you grow—and forecasts you can actually plan with, so decisions get better while the system keeps improving.
