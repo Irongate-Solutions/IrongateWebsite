@@ -118,6 +118,8 @@ Irongate Solutions LLC is a faith-based company (includes guiding scripture in c
 ### Content Philosophy
 The site emphasizes "no consultancy theater" and practical, scalable solutions. Content tone is direct, technical, and focused on long-term maintainability.
 
+**Never use the em dash (—) anywhere in site copy** (page content, component defaults, markdown content, JSON data, meta descriptions, titles). This applies to all prose written or edited by Claude in this repo. Use a period, comma, colon, or semicolon instead, whichever fits the sentence. When splitting a title/subtitle pair (e.g. `<title>` tags), use a colon (`:`) instead of a dash.
+
 ### Sitemap Configuration
 Astro sitemap integration filters out any pages with `/admin` in the path.
 

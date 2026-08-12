@@ -2,7 +2,6 @@
   "main": [
     { "label": "What We Do", "href": "/what-we-do" },
     { "label": "How We Work", "href": "/how-we-work" },
-    { "label": "Results", "href": "/results" },
     { "label": "Insights", "href": "/insights" },
     { "label": "About", "href": "/about" }
   ],
