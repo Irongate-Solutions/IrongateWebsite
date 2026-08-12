@@ -1,4 +1,14 @@
 declare module 'astro:content' {
+	interface Render {
+		'.mdx': Promise<{
+			Content: import('astro').MarkdownInstance<{}>['Content'];
+			headings: import('astro').MarkdownHeading[];
+			remarkPluginFrontmatter: Record<string, any>;
+		}>;
+	}
+}
+
+declare module 'astro:content' {
 	interface RenderResult {
 		Content: import('astro/runtime/server/index.js').AstroComponentFactory;
 		headings: import('astro').MarkdownHeading[];
@@ -140,50 +150,35 @@ declare module 'astro:content' {
 	>;
 
 	type ContentEntryMap = {
-		"case-studies": {
-"customer-rules.md": {
-	id: "customer-rules.md";
-  slug: "customer-rules-engine";
+		"case-studies": Record<string, {
+  id: string;
+  slug: string;
   body: string;
   collection: "case-studies";
-  data: any
-} & { render(): Render[".md"] };
-"netsuite-integration.md": {
-	id: "netsuite-integration.md";
-  slug: "food-manufacturing-netsuite";
+  data: InferEntrySchema<"case-studies">;
+  render(): Render[".md"];
+}>;
+"insights": {
+"hidden-cost-manual-data-entry.md": {
+	id: "hidden-cost-manual-data-entry.md";
+  slug: "hidden-cost-manual-data-entry";
   body: string;
-  collection: "case-studies";
-  data: any
+  collection: "insights";
+  data: InferEntrySchema<"insights">
 } & { render(): Render[".md"] };
-"process-control-alerts.md": {
-	id: "process-control-alerts.md";
-  slug: "process-control-alerts";
+"mock-recall-under-one-hour.md": {
+	id: "mock-recall-under-one-hour.md";
+  slug: "mock-recall-under-one-hour";
   body: string;
-  collection: "case-studies";
-  data: any
+  collection: "insights";
+  data: InferEntrySchema<"insights">
 } & { render(): Render[".md"] };
-};
-"services": {
-"analytics.md": {
-	id: "analytics.md";
-  slug: "analytics";
+"plant-doesnt-need-erp.md": {
+	id: "plant-doesnt-need-erp.md";
+  slug: "plant-doesnt-need-erp";
   body: string;
-  collection: "services";
-  data: any
-} & { render(): Render[".md"] };
-"development.md": {
-	id: "development.md";
-  slug: "development";
-  body: string;
-  collection: "services";
-  data: any
-} & { render(): Render[".md"] };
-"integration.md": {
-	id: "integration.md";
-  slug: "integration";
-  body: string;
-  collection: "services";
-  data: any
+  collection: "insights";
+  data: InferEntrySchema<"insights">
 } & { render(): Render[".md"] };
 };
 
@@ -195,5 +190,5 @@ declare module 'astro:content' {
 
 	type AnyEntryMap = ContentEntryMap & DataEntryMap;
 
-	export type ContentConfig = never;
+	export type ContentConfig = typeof import("./../../src/content/config.js");
 }

@@ -1,0 +1,179 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+import ContactCTA from '@components/ContactCTA.astro';
+---
+
+<BaseLayout
+  title="Full-Plant Integration Case Study — From Paper to Connected Operations"
+  description="How a mid-size food manufacturer transformed from paper-based processes to a fully integrated operation with 220+ connected systems."
+>
+  <!-- Hero -->
+  <section class="bg-charcoal text-white py-20">
+    <div class="container mx-auto px-6">
+      <div class="max-w-3xl">
+        <a href="/results" class="text-copper font-medium hover:text-white transition-colors mb-4 inline-block">&larr; Back to Results</a>
+        <span class="block text-copper font-medium text-sm uppercase tracking-wide mb-4">Case Study</span>
+        <h1 class="font-heading text-4xl md:text-5xl font-bold mb-6">
+          Full-Plant Integration: From Paper to Connected Operations
+        </h1>
+        <p class="text-xl text-gray-300">
+          A decade-long partnership that transformed a food manufacturing operation from the ground up.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- The Plant -->
+  <section class="py-16">
+    <div class="container mx-auto px-6">
+      <div class="max-w-3xl mx-auto prose-lg">
+        <h2 class="font-heading text-2xl font-bold mb-6">The Plant</h2>
+        <p class="text-charcoal-light leading-relaxed mb-4">
+          A mid-size food manufacturer with multiple production lines, hundreds of SKUs, and a growing list of customer and regulatory requirements. The plant processes raw materials from dozens of suppliers and ships finished goods to retail, foodservice, and industrial customers across the country.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- The Starting Point -->
+  <section class="bg-white py-16">
+    <div class="container mx-auto px-6">
+      <div class="max-w-3xl mx-auto">
+        <h2 class="font-heading text-2xl font-bold mb-6">The Starting Point</h2>
+        <p class="text-charcoal-light leading-relaxed mb-6">
+          When the partnership began, the plant looked like most food manufacturing operations:
+        </p>
+        <div class="space-y-4">
+          {[
+            "Paper logs for receiving, production, and quality",
+            "Spreadsheets that didn't talk to each other — or to anyone",
+            "Manual data entry at every handoff point between departments",
+            "Compliance documentation assembled by hand before every audit",
+            "Recall exercises that took three days and involved everyone in the building",
+            "No real-time visibility into production performance or inventory status"
+          ].map((item) => (
+            <div class="flex items-start space-x-3 p-3 bg-linen rounded-lg">
+              <svg class="w-5 h-5 text-copper flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L4.082 16.5c-.77.833.192 2.5 1.732 2.5z"></path>
+              </svg>
+              <span class="text-charcoal-light">{item}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- The First Problem -->
+  <section class="py-16">
+    <div class="container mx-auto px-6">
+      <div class="max-w-3xl mx-auto">
+        <h2 class="font-heading text-2xl font-bold mb-6">The Trigger</h2>
+        <p class="text-charcoal-light leading-relaxed mb-4">
+          A customer audit exposed traceability gaps that paper systems couldn't close. The plant was spending days assembling batch records that should have been available in minutes. The question wasn't whether to invest in technology — it was whether to buy an ERP that didn't understand food manufacturing, or find someone who could build exactly what the operation needed.
+        </p>
+        <p class="text-charcoal-light leading-relaxed">
+          They chose the second option.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- The Journey -->
+  <section class="bg-white py-16">
+    <div class="container mx-auto px-6">
+      <div class="max-w-3xl mx-auto">
+        <h2 class="font-heading text-2xl font-bold mb-8">The Journey</h2>
+        
+        <div class="space-y-12">
+          <div class="border-l-4 border-copper pl-6">
+            <h3 class="font-heading text-xl font-bold mb-2">Year 1–2: Production Foundation</h3>
+            <p class="text-charcoal-light leading-relaxed">
+              Started with the core production floor — replacing clipboard-based batch records with real-time data capture at every line. Operators entered data at the point of action. Batch records assembled themselves. The quality team could trace any product back to its raw materials the same day.
+            </p>
+          </div>
+
+          <div class="border-l-4 border-copper pl-6">
+            <h3 class="font-heading text-xl font-bold mb-2">Year 3–4: Quality & Compliance</h3>
+            <p class="text-charcoal-light leading-relaxed">
+              Extended into quality management — lab data, environmental monitoring, SQF documentation. Audit prep dropped from weeks to hours. Recall simulations that once mobilized the entire plant could now be run by one person in under 30 minutes.
+            </p>
+          </div>
+
+          <div class="border-l-4 border-copper pl-6">
+            <h3 class="font-heading text-xl font-bold mb-2">Year 5–7: End-to-End Integration</h3>
+            <p class="text-charcoal-light leading-relaxed">
+              Connected receiving — automated scale integration, driver check-in, lab sample tracking. Built warehouse management — pallet tracking, storage location scanning, aging workflows. Integrated shipping — PO validation, label generation, ASN transmission. Every department was now on the same connected platform.
+            </p>
+          </div>
+
+          <div class="border-l-4 border-copper pl-6">
+            <h3 class="font-heading text-xl font-bold mb-2">Year 8–10+: Intelligence & Automation</h3>
+            <p class="text-charcoal-light leading-relaxed">
+              Added real-time dashboards, process alerting, tablet-based floor displays, executive reporting. Continued refining and expanding — new products, new customer requirements, new equipment integration. The platform evolves as the plant evolves.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Where They Are Now -->
+  <section class="py-16">
+    <div class="container mx-auto px-6">
+      <div class="max-w-3xl mx-auto">
+        <h2 class="font-heading text-2xl font-bold mb-6">Where They Are Now</h2>
+        <p class="text-charcoal-light leading-relaxed mb-6">
+          Today, data flows from the receiving dock to the shipping bay without a single manual re-entry. Compliance documentation generates automatically. Process deviations trigger real-time alerts. The plant manager sees yield numbers on a wall monitor. The quality team can answer any auditor question in minutes and leadership gets daily performance summaries before they arrive at the plant.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- By the Numbers -->
+  <section class="bg-charcoal text-white py-16">
+    <div class="container mx-auto px-6">
+      <h2 class="font-heading text-3xl font-bold text-center mb-12">By the Numbers</h2>
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-5xl mx-auto">
+        <div class="text-center">
+          <div class="font-heading text-4xl font-bold text-copper mb-2">220+</div>
+          <p class="text-gray-400">Connected systems</p>
+        </div>
+        <div class="text-center">
+          <div class="font-heading text-4xl font-bold text-copper mb-2">20 min</div>
+          <p class="text-gray-400">Recall simulation time</p>
+        </div>
+        <div class="text-center">
+          <div class="font-heading text-4xl font-bold text-copper mb-2">10+</div>
+          <p class="text-gray-400">Years of partnership</p>
+        </div>
+        <div class="text-center">
+          <div class="font-heading text-4xl font-bold text-copper mb-2">Zero</div>
+          <p class="text-gray-400">Manual data re-entry</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pull Quote -->
+  <section class="py-16">
+    <div class="container mx-auto px-6">
+      <div class="max-w-3xl mx-auto text-center">
+        <svg class="w-12 h-12 text-copper/30 mx-auto mb-6" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"></path>
+        </svg>
+        <blockquote class="text-2xl text-charcoal italic leading-relaxed mb-6">
+          "We started with one problem on one production line. Ten years later, they've built the nervous system of our entire plant. I can't imagine running this operation without them."
+        </blockquote>
+        <p class="text-charcoal-light font-medium">— General Manager</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-16">
+    <div class="container mx-auto px-6">
+      <ContactCTA />
+    </div>
+  </section>
+</BaseLayout>

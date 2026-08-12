@@ -1,7 +1,7 @@
 {
   "name": "Irongate Solutions LLC",
   "founded": 2025,
-  "tagline": "Integration & Custom Software Development",
+  "tagline": "Technology That Runs Food Manufacturing Plants",
   "email": "Contact@IronGateSolutions.com",
   "address": {
     "city": "Indianapolis",
@@ -9,11 +9,11 @@
     "zip": "46250"
   },
   "philosophy": {
-    "title": "Built for the Long Term",
-    "description": "We engineer solutions that scale with your business, not against it. Every integration, every line of code, every data pipeline is designed with maintainability and evolution in mind."
+    "title": "Built for the Plant Floor",
+    "description": "We build connected systems that cover your entire operation — from the receiving dock to the shipping bay. Long-term partnerships, not short-term projects."
   },
   "guidingScripture": {
     "citation": "Proverbs 3:6 KJV",
-    "text": "In all thy ways acknowledge him, and he shall direct thy paths."  
+    "text": "In all thy ways acknowledge him, and he shall direct thy paths."
   }
 }

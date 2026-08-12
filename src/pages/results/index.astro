@@ -1,0 +1,92 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+import ContactCTA from '@components/ContactCTA.astro';
+---
+
+<BaseLayout
+  title="Results — Proof from the Plant Floor"
+  description="We measure our work by what changes on the plant floor — not by lines of code. Real outcomes from real food manufacturing operations."
+>
+  <!-- Intro -->
+  <section class="bg-white py-20">
+    <div class="container mx-auto px-6">
+      <div class="max-w-3xl">
+        <h1 class="font-heading text-4xl md:text-5xl font-bold text-charcoal mb-6">
+          Results
+        </h1>
+        <p class="text-xl text-charcoal-light leading-relaxed">
+          We measure our work by what changes on the plant floor — not by lines of code.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Case Study -->
+  <section class="py-16">
+    <div class="container mx-auto px-6">
+      <a href="/results/full-plant-integration" class="block group">
+        <div class="bg-charcoal text-white rounded-lg p-8 md:p-12 hover:bg-charcoal-light transition-colors">
+          <div class="max-w-3xl">
+            <span class="text-copper font-medium text-sm uppercase tracking-wide">Featured Case Study</span>
+            <h2 class="font-heading text-3xl md:text-4xl font-bold mt-4 mb-4">
+              Full-Plant Integration: From Paper to Connected Operations
+            </h2>
+            <p class="text-gray-300 text-lg mb-6">
+              How a mid-size food manufacturer went from paper logs and disconnected systems to a fully integrated operation — 220+ connected systems covering every step from raw material receiving to finished goods shipping.
+            </p>
+            <span class="text-copper font-medium group-hover:text-white transition-colors">
+              Read the full story &rarr;
+            </span>
+          </div>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- Outcome Highlights -->
+  <section class="bg-white py-16">
+    <div class="container mx-auto px-6">
+      <h2 class="font-heading text-3xl font-bold text-center mb-12">Outcomes That Matter</h2>
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div class="text-center p-6">
+          <div class="font-heading text-4xl font-bold text-copper mb-2">95%</div>
+          <p class="text-charcoal-light">Reduction in recall response time</p>
+        </div>
+        <div class="text-center p-6">
+          <div class="font-heading text-4xl font-bold text-copper mb-2">Zero</div>
+          <p class="text-charcoal-light">Manual data re-entry between departments</p>
+        </div>
+        <div class="text-center p-6">
+          <div class="font-heading text-4xl font-bold text-copper mb-2">Same Day</div>
+          <p class="text-charcoal-light">Compliance documentation ready for any audit</p>
+        </div>
+        <div class="text-center p-6">
+          <div class="font-heading text-4xl font-bold text-copper mb-2">10+ Years</div>
+          <p class="text-charcoal-light">Continuous partnership and system evolution</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonial -->
+  <section class="py-16">
+    <div class="container mx-auto px-6">
+      <div class="max-w-3xl mx-auto text-center">
+        <svg class="w-12 h-12 text-copper/30 mx-auto mb-6" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"></path>
+        </svg>
+        <blockquote class="text-xl text-charcoal italic leading-relaxed mb-6">
+          "They didn't just install software — they learned our operation. Ten years later, they know our process better than most of our own people. That's not a vendor. That's a partner."
+        </blockquote>
+        <p class="text-charcoal-light font-medium">— Plant Operations Manager</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-16">
+    <div class="container mx-auto px-6">
+      <ContactCTA />
+    </div>
+  </section>
+</BaseLayout>

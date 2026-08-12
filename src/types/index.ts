@@ -4,14 +4,21 @@ export interface NavigationItem {
   external?: boolean;
 }
 
-export interface Service {
+export interface Capability {
   title: string;
   slug: string;
   description: string;
-  features: string[];
-  technologies: string[];
-  icon?: string;
-  thumbnail?: string;
+  icon: string;
+  href: string;
+}
+
+export interface InsightArticle {
+  title: string;
+  slug: string;
+  description: string;
+  category: string;
+  date: Date | string;
+  author?: string;
 }
 
 export interface CaseStudy {
@@ -22,7 +29,6 @@ export interface CaseStudy {
   challenge?: string;
   solution?: string;
   outcome?: string;
-  technologies?: string[];
   date?: Date | string;
   industry?: string;
   duration?: string;
@@ -56,6 +62,8 @@ export interface FormSubmission {
   name: string;
   email: string;
   company?: string;
+  role?: string;
+  phone?: string;
   message?: string;
   source: string;
   timestamp: string;

@@ -5,53 +5,52 @@ import company from '@data/company.json';
 ---
 
 <BaseLayout
-  title="Contact Us"
-  description="Get in touch with Irongate Solutions to discuss your integration and software development needs."
+  title="Let's Talk About Your Plant"
+  description="Tell us about your operation and what's on your mind. No RFPs, no questionnaires — just a conversation about your food manufacturing challenges."
 >
-  <section class="py-16">
+  <section class="bg-white py-20">
     <div class="container mx-auto px-6">
-      <div class="max-w-4xl mx-auto">
+      <div class="max-w-5xl mx-auto">
         <div class="grid md:grid-cols-2 gap-12">
           <!-- Contact Info -->
           <div>
-            <h1 class="font-heading text-4xl font-bold text-charcoal mb-6">
-              Let's Discuss Your Project
+            <h1 class="font-heading text-4xl md:text-5xl font-bold text-charcoal mb-6">
+              Let's Talk About Your Plant
             </h1>
-            <p class="text-lg text-charcoal-light mb-8">
-              Tell us about your integration challenges, technical requirements, or software development needs. We'll respond within one business day.
+            <p class="text-lg text-charcoal-light mb-8 leading-relaxed">
+              Tell us a little about your operation and what's on your mind. No RFPs, no questionnaires — just a conversation.
             </p>
 
-            <div class="space-y-6">
+            <div class="space-y-8">
               <div>
-                <h3 class="font-medium text-charcoal mb-2">Email</h3>
-                <a
-                  href={`mailto:${company.email}`}
-                  class="text-copper hover:text-copper-dark transition-colors">
-                  {company.email}
-                </a>
+                <h3 class="font-heading font-bold text-charcoal mb-2">Prefer to just call? So do we.</h3>
+                <p class="text-charcoal-light">
+                  <a
+                    href={`mailto:${company.email}`}
+                    class="text-copper hover:text-copper-dark transition-colors font-medium">
+                    {company.email}
+                  </a>
+                </p>
               </div>
 
               <div>
-                <h3 class="font-medium text-charcoal mb-2">Location</h3>
+                <h3 class="font-heading font-bold text-charcoal mb-2">Location</h3>
                 <p class="text-charcoal-light">
                   {company.address.city}, {company.address.state}
                 </p>
               </div>
 
-              <div>
-                <h3 class="font-medium text-charcoal mb-2">What to Expect</h3>
-                <ul class="space-y-2 text-charcoal-light">
-                  <li>• Response within 24 hours</li>
-                  <li>• Free initial consultation</li>
-                  <li>• No sales pressure or lengthy discovery processes</li>
-                  <li>• Honest assessment of whether we can help</li>
-                </ul>
+              <div class="bg-linen rounded-lg p-6">
+                <h3 class="font-heading font-bold text-charcoal mb-3">What to Expect</h3>
+                <p class="text-charcoal-light leading-relaxed">
+                  We'll get back to you within one business day. First conversations are usually 30 minutes — we'll ask about your plant, your process, and where things are breaking down. No pitch decks.
+                </p>
               </div>
             </div>
           </div>
 
           <!-- Contact Form -->
-          <div class="bg-white p-8 rounded-lg border border-charcoal/10">
+          <div class="bg-white p-8 rounded-lg border border-charcoal/10 shadow-sm">
             <ContactForm source="contact-page" />
           </div>
         </div>

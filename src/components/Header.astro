@@ -12,21 +12,29 @@ const currentPath = Astro.url.pathname;
       </a>
 
       <!-- Desktop Navigation -->
-      <ul class="hidden md:flex space-x-8">
-        {navigation.main.map((item) => (
-          <li>
-            <a
-              href={item.href}
-              class={`font-medium transition-colors hover:text-copper ${
-                currentPath === item.href ? 'text-copper' : 'text-charcoal'
-              }`}
-              aria-current={currentPath === item.href ? 'page' : undefined}
-            >
-              {item.label}
-            </a>
-          </li>
-        ))}
-      </ul>
+      <div class="hidden md:flex items-center space-x-8">
+        <ul class="flex space-x-8">
+          {navigation.main.map((item) => (
+            <li>
+              <a
+                href={item.href}
+                class={`font-medium transition-colors hover:text-copper ${
+                  currentPath.startsWith(item.href) ? 'text-copper' : 'text-charcoal'
+                }`}
+                aria-current={currentPath === item.href ? 'page' : undefined}
+              >
+                {item.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+        <a
+          href={navigation.cta.href}
+          class="bg-copper text-white font-medium py-2 px-6 rounded-md hover:bg-copper-dark transition-colors"
+        >
+          {navigation.cta.label}
+        </a>
+      </div>
 
       <!-- Mobile Menu Button -->
       <button
@@ -49,13 +57,21 @@ const currentPath = Astro.url.pathname;
             <a
               href={item.href}
               class={`block font-medium transition-colors hover:text-copper ${
-                currentPath === item.href ? 'text-copper' : 'text-charcoal'
+                currentPath.startsWith(item.href) ? 'text-copper' : 'text-charcoal'
               }`}
             >
               {item.label}
             </a>
           </li>
         ))}
+        <li>
+          <a
+            href={navigation.cta.href}
+            class="inline-block bg-copper text-white font-medium py-2 px-6 rounded-md hover:bg-copper-dark transition-colors"
+          >
+            {navigation.cta.label}
+          </a>
+        </li>
       </ul>
     </div>
   </nav>
