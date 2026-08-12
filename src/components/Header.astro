@@ -1,6 +1,9 @@
 ---
 import navigation from '@data/navigation.json';
 
+const insightsEnabled = import.meta.env.PUBLIC_ENABLE_INSIGHTS !== 'false';
+const navItems = navigation.main.filter((item) => insightsEnabled || item.href !== '/insights');
+
 const currentPath = Astro.url.pathname;
 ---
 
@@ -14,7 +17,7 @@ const currentPath = Astro.url.pathname;
       <!-- Desktop Navigation -->
       <div class="hidden md:flex items-center space-x-8">
         <ul class="flex space-x-8">
-          {navigation.main.map((item) => (
+          {navItems.map((item) => (
             <li>
               <a
                 href={item.href}

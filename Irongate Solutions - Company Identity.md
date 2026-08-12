@@ -4,7 +4,7 @@
 **Name:** Irongate Solutions LLC  
 **Founded:** 2025  
 **Location:** Indianapolis, IN 46250  
-**Contact:** Contact@IronGateSolutions.com  
+**Contact:** Contact@IronGateSolutions.org  
 **Tagline:** Integration & Custom Software Development  
 **Philosophy:** "Built for the Long Term"
 

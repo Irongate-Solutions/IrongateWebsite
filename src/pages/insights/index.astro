@@ -3,6 +3,10 @@ import BaseLayout from '@layouts/BaseLayout.astro';
 import ContactCTA from '@components/ContactCTA.astro';
 import { getCollection } from 'astro:content';
 
+if (import.meta.env.PUBLIC_ENABLE_INSIGHTS === 'false') {
+  return Astro.redirect('/', 302);
+}
+
 const allInsights = await getCollection('insights');
 const sortedInsights = allInsights.sort((a, b) => {
   const dateA = new Date(a.data.date).getTime();
@@ -13,7 +17,7 @@ const sortedInsights = allInsights.sort((a, b) => {
 
 <BaseLayout
   title="Insights: From the Plant Floor"
-  description="Practical articles for food manufacturing professionals. Operational problems, real solutions, and lessons learned building plant floor technology."
+  description="Practical articles for food manufacturing professionals. Operational problems, real solutions, and lessons learned building plant floor software."
 >
   <!-- Intro -->
   <section class="bg-white py-20">
@@ -23,7 +27,7 @@ const sortedInsights = allInsights.sort((a, b) => {
           Insights
         </h1>
         <p class="text-xl text-charcoal-light leading-relaxed">
-          Practical perspectives on food manufacturing operations, technology, and compliance. Written for plant managers and operations leaders, not software developers.
+          Practical perspectives on food manufacturing operations, software, and compliance. Written for plant managers and operations leaders, not software developers.
         </p>
       </div>
     </div>
@@ -63,7 +67,7 @@ const sortedInsights = allInsights.sort((a, b) => {
     <div class="container mx-auto px-6">
       <ContactCTA
         title="Have a question about your operation?"
-        description="We're always happy to talk about food manufacturing technology, no strings attached."
+        description="We're always happy to talk about food manufacturing software, no strings attached."
       />
     </div>
   </section>

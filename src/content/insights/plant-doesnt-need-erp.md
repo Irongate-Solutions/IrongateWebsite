@@ -5,7 +5,7 @@ category: "Perspective"
 date: "2026-01-20"
 ---
 
-When food manufacturers start looking at technology, someone inevitably says "we need an ERP." It makes sense on the surface: one system for everything. But here's the problem: ERP systems are built for accounting and financial management, not for running a food manufacturing plant.
+When food manufacturers start looking at software, someone inevitably says "we need an ERP." It makes sense on the surface: one system for everything. But here's the problem: ERP systems are built for accounting and financial management, not for running a food manufacturing plant.
 
 ## What ERP Systems Do Well
 

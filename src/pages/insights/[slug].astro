@@ -4,6 +4,9 @@ import ContactCTA from '@components/ContactCTA.astro';
 import { getCollection } from 'astro:content';
 
 export async function getStaticPaths() {
+  if (import.meta.env.PUBLIC_ENABLE_INSIGHTS === 'false') {
+    return [];
+  }
   const insights = await getCollection('insights');
   return insights.map((entry) => ({
     params: { slug: entry.slug },
