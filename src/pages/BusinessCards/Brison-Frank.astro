@@ -1,0 +1,45 @@
+---
+// Redirect target for the Brison Frank business card QR code / URL.
+// Fires a fire-and-forget hit to N8N before redirecting so card
+// impressions can be counted.
+const destination = '/';
+const source = 'business-card-brison-frank';
+const webhookUrl = import.meta.env.PUBLIC_N8N_TRACKING_WEBHOOK;
+const authKey = import.meta.env.PUBLIC_N8N_AUTH_KEY;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Redirecting... | Irongate Solutions</title>
+  <meta http-equiv="refresh" content={`0;url=${destination}`}>
+  <link rel="canonical" href={destination}>
+</head>
+<body>
+  <p>Redirecting to <a href={destination}>Irongate Solutions</a>...</p>
+  <script define:vars={{ destination, source, webhookUrl, authKey }}>
+    if (webhookUrl) {
+      // keepalive lets the request finish even though we navigate away immediately after
+      fetch(webhookUrl, {
+        method: 'POST',
+        keepalive: true,
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${authKey}`
+        },
+        body: JSON.stringify({
+          source,
+          path: window.location.pathname,
+          referrer: document.referrer,
+          timestamp: new Date().toISOString()
+        })
+      }).catch(() => {});
+    }
+
+    window.location.replace(destination);
+  </script>
+</body>
+</html>
