@@ -22,6 +22,7 @@ const {
 } = Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const ogImageURL = new URL(ogImage, Astro.site);
 ---
 
 <!DOCTYPE html>
@@ -41,7 +42,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
   <!-- Open Graph -->
   <meta property="og:title" content={title}>
   <meta property="og:description" content={description}>
-  <meta property="og:image" content={ogImage}>
+  <meta property="og:image" content={ogImageURL}>
   <meta property="og:url" content={canonicalURL}>
   <meta property="og:type" content="website">
 
@@ -49,7 +50,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content={title}>
   <meta name="twitter:description" content={description}>
-  <meta name="twitter:image" content={ogImage}>
+  <meta name="twitter:image" content={ogImageURL}>
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
