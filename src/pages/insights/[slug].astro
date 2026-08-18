@@ -1,0 +1,61 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+import ContactCTA from '@components/ContactCTA.astro';
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  if (import.meta.env.PUBLIC_ENABLE_INSIGHTS === 'false') {
+    return [];
+  }
+  const insights = await getCollection('insights');
+  return insights.map((entry) => ({
+    params: { slug: entry.slug },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await entry.render();
+---
+
+<BaseLayout
+  title={`${entry.data.title} | Irongate Solutions`}
+  description={entry.data.description}
+>
+  <!-- Article Header -->
+  <section class="bg-white py-20">
+    <div class="container mx-auto px-6">
+      <div class="max-w-3xl mx-auto">
+        <a href="/insights" class="text-copper font-medium hover:text-copper-dark transition-colors mb-4 inline-block">&larr; Back to Insights</a>
+        <div class="flex items-center gap-4 mb-4">
+          <span class="text-sm font-medium text-copper uppercase tracking-wide">{entry.data.category}</span>
+          <span class="text-sm text-charcoal/40">
+            {new Date(entry.data.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
+          </span>
+        </div>
+        <h1 class="font-heading text-3xl md:text-4xl font-bold text-charcoal">
+          {entry.data.title}
+        </h1>
+      </div>
+    </div>
+  </section>
+
+  <!-- Article Content -->
+  <section class="py-12">
+    <div class="container mx-auto px-6">
+      <div class="max-w-3xl mx-auto prose prose-lg prose-charcoal prose-headings:font-heading prose-headings:font-bold prose-a:text-copper hover:prose-a:text-copper-dark prose-strong:text-charcoal">
+        <Content />
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-16">
+    <div class="container mx-auto px-6 max-w-3xl mx-auto">
+      <ContactCTA
+        title="Want to talk about this?"
+        description="If this article raised questions about your own operation, we're happy to have a conversation."
+      />
+    </div>
+  </section>
+</BaseLayout>

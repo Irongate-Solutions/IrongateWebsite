@@ -1,113 +1,93 @@
 ---
 import BaseLayout from '@layouts/BaseLayout.astro';
-import ServiceCard from '@components/ServiceCard.astro';
-import CaseStudyCard from '@components/CaseStudyCard.astro';
-import EmailCapture from '@components/EmailCapture.astro';
+import ContactCTA from '@components/ContactCTA.astro';
 import company from '@data/company.json';
-
-const services = [
-  {
-    title: "System Integration",
-    description: "Connect disparate systems into cohesive workflows that actually work.",
-    slug: "integration"
-  },
-  {
-    title: "Custom Development",
-    description: "Purpose-built solutions when off-the-shelf falls short.",
-    slug: "development"
-  },
-  {
-    title: "Data & Analytics",
-    description: "Transform raw data into actionable intelligence.",
-    slug: "analytics"
-  }
-];
-
-const caseStudies = [
-  {
-    title: "Healthcare Network Integration",
-    problem: "Seven systems, zero communication",
-    outcome: "$1.2M annual savings",
-    slug: "enterprise-integration"
-  },
-  {
-    title: "Custom Manufacturing Platform",
-    problem: "Excel-based production tracking",
-    outcome: "60% faster order processing",
-    slug: "custom-platform"
-  },
-  {
-    title: "Real-time Analytics Pipeline",
-    problem: "Week-old reports driving daily decisions",
-    outcome: "Sub-minute data freshness",
-    slug: "data-pipeline"
-  }
-];
 ---
 
 <BaseLayout
-  title="Enterprise Integration & Custom Development"
-  description="We build the technical infrastructure that lets your business operate at scale."
+  title="Software That Runs Food Manufacturing Plants"
+  description="We build systems that connect your food manufacturing plants."
 >
   <!-- Hero Section -->
-  <section class="bg-white py-20">
+  <section class="bg-charcoal text-white py-24">
     <div class="container mx-auto px-6">
-      <div class="max-w-3xl">
-        <h1 class="font-heading text-5xl font-bold text-charcoal mb-6">
-          We fix what's broken between your systems
+      <div class="max-w-4xl">
+        <h1 class="font-heading text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
+          We build the software that connects your plant
         </h1>
-        <p class="text-xl text-charcoal-light mb-8">
-          {company.tagline}. No consultancy theater, no vendor lock-in. Just solid technical work that scales.
+        <p class="text-xl text-gray-300 mb-8 max-w-2xl">
+          Software partners that stick with you for years and decades, not weeks and months.
         </p>
-        <a href="/contact" class="inline-block bg-copper text-white font-medium py-3 px-8 rounded-md hover:bg-copper-dark transition-colors">
-          Start a Conversation
+        <a href="/contact" class="inline-block bg-copper text-white font-medium py-3 px-8 rounded-md hover:bg-copper-dark transition-colors text-lg">
+          Let's Talk About Your Plant
         </a>
       </div>
     </div>
   </section>
 
-  <!-- Philosophy Section -->
-  <section class="py-16">
-    <div class="container mx-auto px-6">
-      <div class="max-w-3xl mx-auto text-center">
-        <h2 class="font-heading text-3xl font-bold mb-6">{company.philosophy.title}</h2>
-        <p class="text-lg text-charcoal-light">{company.philosophy.description}</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Services Section -->
-  <section class="bg-white py-20">
-    <div class="container mx-auto px-6">
-      <h2 class="font-heading text-3xl font-bold text-center mb-12">What We Do</h2>
-      <div class="grid md:grid-cols-3 gap-8">
-        {services.map(service => (
-          <ServiceCard {...service} />
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <!-- Case Studies Section -->
+  <!-- Problem Statement -->
   <section class="py-20">
     <div class="container mx-auto px-6">
-      <h2 class="font-heading text-3xl font-bold text-center mb-12">Recent Work</h2>
-      <div class="grid md:grid-cols-3 gap-8">
-        {caseStudies.map(study => (
-          <CaseStudyCard {...study} />
-        ))}
+      <div class="max-w-3xl mx-auto">
+        <h2 class="font-heading text-3xl font-bold mb-8">Sound familiar?</h2>
+        <div class="space-y-6 text-lg text-charcoal-light leading-relaxed">
+          <p>
+            Your plant runs on a patchwork of spreadsheets, legacy software, and tribal knowledge. Compliance takes days instead of minutes. Data lives in silos. You re-enter the same numbers four times.
+          </p>
+          <p>
+            Your receiving team writes weight tickets by hand. Your quality lab tracks results in binders. Your production floor uses clipboards. Your warehouse crew walks the floor to count inventory. And when an auditor asks for traceability data, someone disappears for a weekend.
+          </p>
+          <p>
+            You've looked at ERP systems that cost a fortune and take years to implement. You've talked to software companies that don't understand the difference between a batch record and a bill of materials.
+          </p>
+          <p class="text-charcoal font-medium">
+            The fix isn't a bigger ERP. It's connecting the systems you already run, 
+            built by people who know and understand what you need.
+          </p>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- Email Capture Section -->
-  <section class="bg-charcoal text-white py-16">
+  <!-- Visual Data Flow -->
+  <section class="bg-white py-20">
     <div class="container mx-auto px-6">
-      <div class="max-w-2xl mx-auto text-center">
-        <h2 class="font-heading text-3xl font-bold mb-4">Stay Updated</h2>
-        <p class="mb-8">Technical insights and case studies. No sales pitches.</p>
-        <EmailCapture source="homepage-footer" />
+      <div class="max-w-5xl mx-auto text-center">
+        <h2 class="font-heading text-3xl font-bold mb-12">How Data Flows Through Your Plant</h2>
+        <div class="flex flex-wrap justify-center items-center gap-2 md:gap-4 mb-8">
+          {[
+
+            { label: "Receiving", icon: "📦" },
+            { label: "Production", icon: "⚙️" },
+            { label: "Lab & QC", icon: "🔬" },
+            { label: "Warehouse", icon: "🏭" },
+            { label: "Shipping", icon: "🚚" }
+          ].map((step, i) => (
+            <div class="flex items-center">
+              <div class="bg-linen border border-charcoal/10 rounded-lg p-4 text-center min-w-[120px]">
+                <div class="text-3xl mb-2">{step.icon}</div>
+                <div class="text-sm font-medium text-charcoal">{step.label}</div>
+              </div>
+              {i < 4 && (
+                <svg class="w-6 h-6 text-copper mx-1 hidden md:block flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                </svg>
+              )}
+            </div>
+          ))}
+        </div>
+        <p class="text-lg text-charcoal-light italic">
+          We've built every piece of it.
+        </p>
       </div>
+    </div>
+  </section>
+
+
+  <!-- CTA -->
+  <section class="py-16">
+    <div class="container mx-auto px-6">
+      <ContactCTA />
     </div>
   </section>
 </BaseLayout>

@@ -5,21 +5,37 @@ import company from '@data/company.json';
 
 <footer class="bg-charcoal text-white py-12">
   <div class="container mx-auto px-6">
-    <div class="grid md:grid-cols-3 gap-8">
+    <div class="grid md:grid-cols-4 gap-8">
       <!-- Company Info -->
       <div>
         <h3 class="font-heading text-lg font-bold mb-4">{company.name}</h3>
-        <p class="text-gray-400 mb-4">{company.tagline}</p>
         <p class="text-gray-400">
-          {company.address.city}, {company.address.state}
+          Software for food manufacturers across the Midwest
         </p>
       </div>
 
-      <!-- Quick Links -->
+      <!-- What We Do -->
       <div>
-        <h3 class="font-heading text-lg font-bold mb-4">Quick Links</h3>
+        <h3 class="font-heading text-lg font-bold mb-4">What We Do</h3>
         <ul class="space-y-2">
-          {navigation.footer.map((item) => (
+          {navigation.footer.capabilities.map((item) => (
+            <li>
+              <a
+                href={item.href}
+                class="text-gray-400 hover:text-copper transition-colors"
+              >
+                {item.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- Company Links -->
+      <div>
+        <h3 class="font-heading text-lg font-bold mb-4">Company</h3>
+        <ul class="space-y-2">
+          {navigation.footer.company.map((item) => (
             <li>
               <a
                 href={item.href}
@@ -40,11 +56,21 @@ import company from '@data/company.json';
             {company.email}
           </a>
         </p>
+        <a
+          href="/contact"
+          class="inline-block mt-4 bg-copper text-white font-medium py-2 px-6 rounded-md hover:bg-copper-dark transition-colors"
+        >
+          Let's Talk About Your Plant
+        </a>
       </div>
     </div>
 
-    <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
-      <p>&copy; {new Date().getFullYear()} {company.name}. All rights reserved.</p>
+    <div class="border-t border-gray-700 mt-8 pt-8 text-center">
+      <div class="mb-10">
+        <p class="text-gray-400">"{company.guidingScripture.text}"</p>
+        <p class="text-gray-500 text-sm italic mt-1">{company.guidingScripture.citation}</p>
+      </div>
+      <p class="text-gray-400">&copy; {new Date().getFullYear()} {company.name}. All rights reserved.</p>
     </div>
   </div>
 </footer>

@@ -1,17 +1,23 @@
 {
   "main": [
-    { "label": "Home", "href": "/" },
-    { "label": "Services", "href": "/services" },
-    { "label": "Work", "href": "/work" },
-    { "label": "About", "href": "/about" },
-    { "label": "Contact", "href": "/contact" }
+    { "label": "What We Do", "href": "/what-we-do" },
+    { "label": "How We Work", "href": "/how-we-work" },
+    { "label": "Insights", "href": "/insights" },
+    { "label": "About", "href": "/about" }
   ],
-  "footer": [
-    { "label": "Services", "href": "/services" },
-    { "label": "Work", "href": "/work" },
-    { "label": "About", "href": "/about" },
-    { "label": "Contact", "href": "/contact" },
-    { "label": "Privacy", "href": "/privacy" },
-    { "label": "Terms", "href": "/terms" }
-  ]
+  "cta": { "label": "Let's Talk", "href": "/contact" },
+  "footer": {
+    "capabilities": [
+      { "label": "Receiving & Raw Materials", "href": "/what-we-do/receiving" },
+      { "label": "Production & Process Control", "href": "/what-we-do/production" },
+      { "label": "Quality & Compliance", "href": "/what-we-do/quality" },
+      { "label": "Warehouse & Inventory", "href": "/what-we-do/warehouse" },
+      { "label": "Shipping & Distribution", "href": "/what-we-do/shipping" },
+      { "label": "Plant Intelligence & Dashboards", "href": "/what-we-do/plant-intelligence" }
+    ],
+    "company": [
+      { "label": "About Us", "href": "/about" },
+      { "label": "Contact", "href": "/contact" }
+    ]
+  }
 }

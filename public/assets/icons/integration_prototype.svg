@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256" fill="none" stroke="#36454F" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+  <!-- Interconnected nodes / data flow -->
+  <rect x="28" y="28" width="64" height="64" rx="10"/>
+  <circle cx="128" cy="128" r="28"/>
+  <rect x="164" y="164" width="64" height="64" rx="10"/>
+  <!-- Connectors -->
+  <line x1="92" y1="60" x2="106" y2="104"/>
+  <line x1="150" y1="150" x2="164" y2="164"/>
+  <line x1="106" y1="104" x2="150" y2="150"/>
+  <!-- Data flow accents -->
+  <circle cx="118" cy="114" r="3"/>
+  <circle cx="138" cy="134" r="3"/>
+</svg>

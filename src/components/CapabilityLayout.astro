@@ -1,0 +1,95 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+import ContactCTA from '@components/ContactCTA.astro';
+
+export interface Props {
+  title: string;
+  headline: string;
+  description: string;
+  capabilities: string[];
+  painPoints: string[];
+  outcome: string;
+}
+
+const { title, headline, description, capabilities, painPoints, outcome } = Astro.props;
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+>
+  <!-- Hero -->
+  <section class="bg-white py-20">
+    <div class="container mx-auto px-6">
+      <div class="max-w-3xl">
+        <a href="/what-we-do" class="text-copper font-medium hover:text-copper-dark transition-colors mb-4 inline-block">&larr; Back to What We Do</a>
+        <h1 class="font-heading text-4xl md:text-5xl font-bold text-charcoal mb-6">{headline}</h1>
+        <p class="text-xl text-charcoal-light">{description}</p>
+      </div>
+    </div>
+  </section>
+
+
+
+  <!-- Pain Points -->
+  <section class="bg-white py-16">
+    <div class="container mx-auto px-6">
+      <div class="max-w-4xl">
+        <h2 class="font-heading text-2xl font-bold mb-8">Problems We Solve</h2>
+        <div class="space-y-4">
+          {painPoints.map((pain) => (
+            <div class="flex items-start space-x-3 p-4 bg-linen rounded-lg">
+              <svg class="w-5 h-5 text-copper flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L4.082 16.5c-.77.833.192 2.5 1.732 2.5z"></path>
+              </svg>
+              <span class="text-charcoal-light">{pain}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+    <!-- Capabilities -->
+  <section class="py-16">
+    <div class="container mx-auto px-6">
+      <div class="max-w-4xl">
+        <h2 class="font-heading text-2xl font-bold mb-8">What We Build</h2>
+        <div class="grid md:grid-cols-2 gap-4">
+          {capabilities.map((cap) => (
+            <div class="flex items-start space-x-3 p-4 bg-white rounded-lg border border-charcoal/5">
+              <svg class="w-5 h-5 text-copper flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+              </svg>
+              <span class="text-charcoal">{cap}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Outcome -->
+  <section class="py-16">
+    <div class="container mx-auto px-6">
+      <div class="max-w-3xl mx-auto text-center">
+        <h2 class="font-heading text-2xl font-bold mb-6">The Result</h2>
+        <blockquote class="text-xl text-charcoal-light italic leading-relaxed border-copper pl-6 text-center">
+          {outcome.split('\n').map((line, i) => (
+            <>
+              {i > 0 && <br />}
+              {line}
+            </>
+          ))}
+        </blockquote>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-16">
+    <div class="container mx-auto px-6">
+      <ContactCTA />
+    </div>
+  </section>
+</BaseLayout>

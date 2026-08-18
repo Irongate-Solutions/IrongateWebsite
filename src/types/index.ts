@@ -4,26 +4,40 @@ export interface NavigationItem {
   external?: boolean;
 }
 
-export interface Service {
+export interface Capability {
   title: string;
   slug: string;
   description: string;
-  features: string[];
-  technologies: string[];
+  icon: string;
+  href: string;
+}
+
+export interface InsightArticle {
+  title: string;
+  slug: string;
+  description: string;
+  category: string;
+  date: Date | string;
+  author?: string;
 }
 
 export interface CaseStudy {
   title: string;
   slug: string;
   client: string;
-  challenge: string;
-  solution: string;
-  outcome: string;
-  technologies: string[];
+  problem?: string;
+  challenge?: string;
+  solution?: string;
+  outcome?: string;
+  date?: Date | string;
+  industry?: string;
+  duration?: string;
   metrics?: {
     label: string;
     value: string;
   }[];
+  thumbnail?: string;
+  heroImage?: string;
 }
 
 export interface CompanyInfo {
@@ -48,6 +62,8 @@ export interface FormSubmission {
   name: string;
   email: string;
   company?: string;
+  role?: string;
+  phone?: string;
   message?: string;
   source: string;
   timestamp: string;

@@ -1,0 +1,74 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+import ContactCTA from '@components/ContactCTA.astro';
+import { getCollection } from 'astro:content';
+
+if (import.meta.env.PUBLIC_ENABLE_INSIGHTS === 'false') {
+  return Astro.redirect('/', 302);
+}
+
+const allInsights = await getCollection('insights');
+const sortedInsights = allInsights.sort((a, b) => {
+  const dateA = new Date(a.data.date).getTime();
+  const dateB = new Date(b.data.date).getTime();
+  return dateB - dateA;
+});
+---
+
+<BaseLayout
+  title="Insights: From the Plant Floor"
+  description="Practical articles for food manufacturing professionals. Operational problems, real solutions, and lessons learned building plant floor software."
+>
+  <!-- Intro -->
+  <section class="bg-white py-20">
+    <div class="container mx-auto px-6">
+      <div class="max-w-3xl">
+        <h1 class="font-heading text-4xl md:text-5xl font-bold text-charcoal mb-6">
+          Insights
+        </h1>
+        <p class="text-xl text-charcoal-light leading-relaxed">
+          Practical perspectives on food manufacturing operations, software, and compliance. Written for plant managers and operations leaders, not software developers.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Articles List -->
+  <section class="py-16">
+    <div class="container mx-auto px-6">
+      <div class="max-w-4xl mx-auto space-y-8">
+        {sortedInsights.map((article) => (
+          <a href={`/insights/${article.slug}`} class="block group">
+            <article class="bg-white p-8 rounded-lg border border-charcoal/10 hover:border-copper transition-all hover:shadow-lg">
+              <div class="flex items-center gap-4 mb-4">
+                <span class="text-sm font-medium text-copper uppercase tracking-wide">{article.data.category}</span>
+                <span class="text-sm text-charcoal/40">
+                  {new Date(article.data.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
+                </span>
+              </div>
+              <h2 class="font-heading text-2xl font-bold text-charcoal mb-3 group-hover:text-copper transition-colors">
+                {article.data.title}
+              </h2>
+              <p class="text-charcoal-light leading-relaxed">
+                {article.data.description}
+              </p>
+              <span class="inline-block mt-4 text-copper font-medium group-hover:text-copper-dark transition-colors">
+                Read article &rarr;
+              </span>
+            </article>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-16">
+    <div class="container mx-auto px-6">
+      <ContactCTA
+        title="Have a question about your operation?"
+        description="We're always happy to talk about food manufacturing software, no strings attached."
+      />
+    </div>
+  </section>
+</BaseLayout>

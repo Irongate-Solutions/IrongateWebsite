@@ -4,27 +4,31 @@ export interface Props {
   problem: string;
   outcome: string;
   slug: string;
+  thumbnail?: string;
+  heroImage?: string;
 }
 
-const { title, problem, outcome, slug } = Astro.props;
+const { title, problem, outcome, slug, thumbnail, heroImage } = Astro.props;
 ---
 
-<div class="bg-white p-6 rounded-lg border border-charcoal/10 hover:border-copper transition-colors">
-  <h3 class="font-heading text-xl font-bold text-charcoal mb-3">{title}</h3>
-  <div class="space-y-3 mb-4">
-    <div>
-      <p class="text-sm font-medium text-charcoal/70">Challenge</p>
-      <p class="text-charcoal-light">{problem}</p>
+<div class="bg-white rounded-lg border border-charcoal/10 hover:border-copper transition-colors overflow-hidden">
+  <div class="p-6">
+    <h3 class="font-heading text-xl font-bold text-charcoal mb-3">{title}</h3>
+    <div class="space-y-3 mb-4">
+      <div>
+        <p class="text-sm font-medium text-charcoal/70">Challenge</p>
+        <p class="text-charcoal-light">{problem}</p>
+      </div>
+      <div>
+        <p class="text-sm font-medium text-charcoal/70">Result</p>
+        <p class="text-copper font-medium">{outcome}</p>
+      </div>
     </div>
-    <div>
-      <p class="text-sm font-medium text-charcoal/70">Result</p>
-      <p class="text-copper font-medium">{outcome}</p>
-    </div>
+    <a
+      href={`/work#${slug}`}
+      class="text-copper font-medium hover:text-copper-dark transition-colors"
+    >
+      Read Case Study →
+    </a>
   </div>
-  <a
-    href={`/work#${slug}`}
-    class="text-copper font-medium hover:text-copper-dark transition-colors"
-  >
-    Read Case Study →
-  </a>
 </div>

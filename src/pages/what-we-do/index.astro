@@ -1,0 +1,81 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+import CapabilityCard from '@components/CapabilityCard.astro';
+import ContactCTA from '@components/ContactCTA.astro';
+
+const capabilities = [
+  {
+    title: "Receiving & Raw Materials",
+    description: "Know exactly what arrived, when, and whether it meets spec, before it touches your process.",
+    href: "/what-we-do/receiving",
+    icon: "📦"
+  },
+  {
+    title: "Production & Process Control",
+    description: "Your lines, your recipes, your process: tracked in real time with zero clipboard data entry.",
+    href: "/what-we-do/production",
+    icon: "⚙️"
+  },
+  {
+    title: "Quality & Compliance",
+    description: "Audit-ready in minutes, not days. Traceability that actually traces.",
+    href: "/what-we-do/quality",
+    icon: "✅"
+  },
+  {
+    title: "Warehouse & Inventory",
+    description: "Every unit, every pallet, every storage location: tracked from production to shipment.",
+    href: "/what-we-do/warehouse",
+    icon: "🏭"
+  },
+  {
+    title: "Shipping & Distribution",
+    description: "The right product, on the right truck, with the right paperwork, every time.",
+    href: "/what-we-do/shipping",
+    icon: "🚚"
+  },
+  // {
+  //   title: "Plant Intelligence & Dashboards",
+  //   description: "See your entire operation in real time, from the front office or the plant floor.",
+  //   href: "/what-we-do/plant-intelligence",
+  //   icon: "📊"
+  // }
+];
+---
+
+<BaseLayout
+  title="What We Do: Connected Systems for Food Manufacturing"
+  description="We build connected systems that cover your entire food manufacturing operation, organized by plant function, not by software category."
+>
+  <!-- Intro -->
+  <section class="bg-white py-20">
+    <div class="container mx-auto px-6">
+      <div class="max-w-4xl">
+        <h1 class="font-heading text-4xl md:text-5xl font-bold text-charcoal mb-6">
+          What We Do
+        </h1>
+        <p class="text-xl text-charcoal-light leading-relaxed">
+          We don't sell individual applications. We build connected systems that cover your entire operation or just your biggest headache, and grow with you as your plant evolves.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Capability Cards -->
+  <section class="py-16">
+    <div class="container mx-auto px-6">
+      <div class="grid md:grid-cols-2 lg:grid-cols-5 gap-8">
+        {capabilities.map(cap => (
+          <CapabilityCard {...cap} />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-16">
+    <div class="container mx-auto px-6">
+      <ContactCTA />
+    </div>
+  </section>
+</BaseLayout>

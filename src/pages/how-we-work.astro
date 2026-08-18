@@ -1,0 +1,101 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+import ContactCTA from '@components/ContactCTA.astro';
+---
+
+<BaseLayout
+  title="How We Work: Long-Term Software Partnerships"
+  description="We don't do projects. We do partnerships. Our embedded model means the engineer who builds your system is the one who supports it, for years."
+>
+  <!-- Hero -->
+  <section class="bg-white py-20">
+    <div class="container mx-auto px-6">
+      <div class="max-w-3xl">
+        <h1 class="font-heading text-4xl md:text-5xl font-bold text-charcoal mb-6">
+          We don't do projects. We do partnerships.
+        </h1>
+        <p class="text-xl text-charcoal-light leading-relaxed">
+          Most software companies scope a project, build it, hand it off, and move on. That works for a marketing website. It doesn't work for a manufacturing plant, because your plant changes. New products, new customers, new regulations, new equipment. Your software needs to evolve with you.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Three Phases -->
+  <section class="py-20">
+    <div class="container mx-auto px-6">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="font-heading text-3xl font-bold mb-12 text-center">How It Works</h2>
+        
+        <div class="space-y-16">
+          <!-- Phase 1 -->
+          <div class="flex flex-col md:flex-row gap-8 items-start">
+            <div class="flex-shrink-0 bg-copper text-white w-16 h-16 rounded-full flex items-center justify-center font-heading text-2xl font-bold">
+              1
+            </div>
+            <div>
+              <h3 class="font-heading text-2xl font-bold mb-4">Understand</h3>
+              <p class="text-lg text-charcoal-light leading-relaxed">
+                We spend time on your plant floor. We watch your operators, talk to your supervisors, and learn your process. We don't start with a requirements document. We start with understanding. Before we write a line of code, we know what a normal day looks like, where things break down, and what keeps your team up at night.
+              </p>
+            </div>
+          </div>
+
+          <!-- Phase 2 -->
+          <div class="flex flex-col md:flex-row gap-8 items-start">
+            <div class="flex-shrink-0 bg-copper text-white w-16 h-16 rounded-full flex items-center justify-center font-heading text-2xl font-bold">
+              2
+            </div>
+            <div>
+              <h3 class="font-heading text-2xl font-bold mb-4">Build the Foundation</h3>
+              <p class="text-lg text-charcoal-light leading-relaxed">
+                We start where the pain is worst: usually one or two critical areas. We build, deploy, and iterate until it's right. Then we expand. There's no big-bang rollout. Every phase delivers real value to your operation before we move to the next one.
+              </p>
+            </div>
+          </div>
+
+          <!-- Phase 3 -->
+          <div class="flex flex-col md:flex-row gap-8 items-start">
+            <div class="flex-shrink-0 bg-copper text-white w-16 h-16 rounded-full flex items-center justify-center font-heading text-2xl font-bold">
+              3
+            </div>
+            <div>
+              <h3 class="font-heading text-2xl font-bold mb-4">Grow Together</h3>
+              <p class="text-lg text-charcoal-light leading-relaxed">
+                Over months and years, we extend coverage across your operation. Each new system connects to what's already there. Your software grows as your business grows.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- What We Don't Do -->
+  <section class="py-20">
+    <div class="container mx-auto px-6">
+      <div class="max-w-3xl mx-auto">
+        <h2 class="font-heading text-3xl font-bold mb-8 text-center">An honest word about fit</h2>
+        <div class="bg-white border border-charcoal/10 rounded-lg p-8">
+          <p class="text-lg text-charcoal-light leading-relaxed text-center">
+            We partner with manufacturers who want a long-term software relationship, 
+            and if that's not what you need to solve your problems, we'll tell you. 
+            Even if it means you don't work with us. Even if we have already spent time talking 
+            through the problems you need to solve.
+          </p>
+
+          <p class="text-lg text-charcoal-light leading-relaxed text-center mt-6">
+          We're not the right fit for everyone, but for others, we're the best.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-16">
+    <div class="container mx-auto px-6">
+      <ContactCTA />
+    </div>
+  </section>
+</BaseLayout>
